@@ -116,14 +116,21 @@
             z-index: 99;
         }
 
-        .nav-content {
+        .nav-wrapper {
             max-width: 1200px;
             margin: 0 auto;
+            position: relative;
             padding: 0 20px;
+        }
+
+        .nav-content {
             display: flex;
             gap: 8px;
             overflow-x: auto;
             scrollbar-width: none;
+            -webkit-overflow-scrolling: touch;
+            scroll-behavior: smooth;
+            padding: 0 30px 0 0;
         }
 
         .nav-content::-webkit-scrollbar { display: none; }
@@ -138,11 +145,69 @@
             transition: all 0.3s ease;
             white-space: nowrap;
             text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 6px;
         }
 
         .nav-item:hover, .nav-item.active {
             color: var(--primary);
             border-bottom-color: var(--primary);
+        }
+
+        .nav-icon {
+            font-size: 1.1rem;
+            display: none;
+        }
+
+        /* 滑动提示 */
+        .swipe-hint {
+            display: none;
+            position: absolute;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            width: 60px;
+            background: linear-gradient(to right, transparent, rgba(255,255,255,0.9) 40%);
+            align-items: center;
+            justify-content: flex-end;
+            padding-right: 10px;
+            pointer-events: none;
+            animation: swipePulse 2s infinite;
+        }
+
+        .swipe-hint-icon {
+            font-size: 1.2rem;
+            color: var(--primary);
+            opacity: 0.8;
+        }
+
+        @keyframes swipePulse {
+            0%, 100% { opacity: 0.6; transform: translateX(0); }
+            50% { opacity: 1; transform: translateX(-3px); }
+        }
+
+        /* 滑动指示器 */
+        .scroll-indicator {
+            display: none;
+            justify-content: center;
+            gap: 6px;
+            padding: 8px 0;
+            background: rgba(255, 255, 255, 0.5);
+        }
+
+        .scroll-dot {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: var(--border);
+            transition: all 0.3s ease;
+        }
+
+        .scroll-dot.active {
+            background: var(--primary);
+            width: 18px;
+            border-radius: 3px;
         }
 
         .container {
@@ -588,6 +653,28 @@
                 padding: 10px 16px;
                 font-size: 0.8rem;
             }
+            
+            /* 移动端导航优化 */
+            .nav-item {
+                padding: 12px 16px;
+                font-size: 0.85rem;
+            }
+            
+            .nav-icon {
+                display: inline-block;
+            }
+            
+            .swipe-hint {
+                display: flex;
+            }
+            
+            .scroll-indicator {
+                display: flex;
+            }
+            
+            .nav-wrapper {
+                padding: 0 10px;
+            }
         }
     </style>
 </head>
@@ -606,13 +693,44 @@
     </div>
 
     <nav class="nav-bar">
-        <div class="nav-content">
-            <a href="#section-business" class="nav-item active">音乐培训商学院</a>
-            <a href="#section-music" class="nav-item">音教前沿</a>
-            <a href="#section-policy" class="nav-item">政策动向</a>
-            <a href="#section-international" class="nav-item">国际视野</a>
-            <a href="#section-competition" class="nav-item">赛事动态</a>
-            <a href="#section-gossip" class="nav-item">行业八卦</a>
+        <div class="nav-wrapper">
+            <div class="nav-content" id="navContent">
+                <a href="#section-business" class="nav-item active">
+                    <span class="nav-icon">💼</span>
+                    <span class="nav-text">音乐培训商学院</span>
+                </a>
+                <a href="#section-music" class="nav-item">
+                    <span class="nav-icon">📚</span>
+                    <span class="nav-text">音教前沿</span>
+                </a>
+                <a href="#section-policy" class="nav-item">
+                    <span class="nav-icon">📋</span>
+                    <span class="nav-text">政策动向</span>
+                </a>
+                <a href="#section-international" class="nav-item">
+                    <span class="nav-icon">🌍</span>
+                    <span class="nav-text">国际视野</span>
+                </a>
+                <a href="#section-competition" class="nav-item">
+                    <span class="nav-icon">🏆</span>
+                    <span class="nav-text">赛事动态</span>
+                </a>
+                <a href="#section-gossip" class="nav-item">
+                    <span class="nav-icon">🎭</span>
+                    <span class="nav-text">行业八卦</span>
+                </a>
+            </div>
+            <div class="swipe-hint">
+                <span class="swipe-hint-icon">››</span>
+            </div>
+        </div>
+        <div class="scroll-indicator">
+            <span class="scroll-dot active" data-index="0"></span>
+            <span class="scroll-dot" data-index="1"></span>
+            <span class="scroll-dot" data-index="2"></span>
+            <span class="scroll-dot" data-index="3"></span>
+            <span class="scroll-dot" data-index="4"></span>
+            <span class="scroll-dot" data-index="5"></span>
         </div>
     </nav>
 
@@ -1408,6 +1526,54 @@
         
         // 每30秒更新一次显示（模拟实时变化）
         setInterval(updateVisitorCount, 30000);
+
+        // 导航栏滑动指示器
+        const navContent = document.getElementById('navContent');
+        const scrollDots = document.querySelectorAll('.scroll-dot');
+        const navItems2 = document.querySelectorAll('.nav-item');
+        
+        if (navContent && scrollDots.length > 0) {
+            // 监听滚动更新指示器
+            navContent.addEventListener('scroll', () => {
+                const scrollLeft = navContent.scrollLeft;
+                const maxScroll = navContent.scrollWidth - navContent.clientWidth;
+                const scrollPercent = scrollLeft / maxScroll;
+                const activeIndex = Math.round(scrollPercent * (scrollDots.length - 1));
+                
+                scrollDots.forEach((dot, index) => {
+                    dot.classList.toggle('active', index === activeIndex);
+                });
+            });
+            
+            // 点击指示器跳转到对应位置
+            scrollDots.forEach((dot, index) => {
+                dot.addEventListener('click', () => {
+                    const maxScroll = navContent.scrollWidth - navContent.clientWidth;
+                    const targetScroll = (index / (scrollDots.length - 1)) * maxScroll;
+                    navContent.scrollTo({ left: targetScroll, behavior: 'smooth' });
+                });
+            });
+        }
+        
+        // 隐藏滑动提示（用户开始滚动后）
+        const swipeHint = document.querySelector('.swipe-hint');
+        if (navContent && swipeHint) {
+            let scrollStarted = false;
+            navContent.addEventListener('scroll', () => {
+                if (!scrollStarted) {
+                    scrollStarted = true;
+                    swipeHint.style.opacity = '0';
+                    swipeHint.style.transition = 'opacity 0.5s ease';
+                }
+            });
+            
+            // 3秒后自动隐藏提示
+            setTimeout(() => {
+                if (!scrollStarted) {
+                    swipeHint.style.opacity = '0.5';
+                }
+            }, 3000);
+        }
     </script>
 </body>
 </html>
