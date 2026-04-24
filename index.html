@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>每日音乐热点 | Music Daily</title>
+    <meta name="description" content="Linson·国际音乐前哨 - 汇聚全球音乐前沿热点、培训商学院实战案例、教育政策解读、行业八卦趣闻">
+    <title>Linson·国际音乐前哨</title>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -19,18 +20,13 @@
             --text-muted: #71717a;
             --border: rgba(255, 255, 255, 0.1);
             --shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
-            --glow: 0 0 40px rgba(99, 102, 241, 0.3);
             --category-1: #6366f1;
             --category-2: #ec4899;
             --category-3: #06b6d4;
             --category-4: #f59e0b;
         }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
             font-family: 'Noto Sans SC', -apple-system, BlinkMacSystemFont, sans-serif;
@@ -40,13 +36,9 @@
             overflow-x: hidden;
         }
 
-        /* Animated background */
         .bg-animation {
             position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
+            top: 0; left: 0; width: 100%; height: 100%;
             z-index: -1;
             background: 
                 radial-gradient(ellipse at 20% 20%, rgba(99, 102, 241, 0.15) 0%, transparent 50%),
@@ -57,10 +49,7 @@
         .bg-animation::before {
             content: '';
             position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
+            top: 0; left: 0; right: 0; bottom: 0;
             background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%236366f1' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
             opacity: 0.5;
         }
@@ -159,9 +148,7 @@
             scrollbar-width: none;
         }
 
-        .nav-content::-webkit-scrollbar {
-            display: none;
-        }
+        .nav-content::-webkit-scrollbar { display: none; }
 
         .nav-item {
             padding: 14px 20px;
@@ -179,17 +166,13 @@
             border-bottom-color: var(--primary);
         }
 
-        /* Container */
         .container {
             max-width: 1200px;
             margin: 0 auto;
             padding: 30px 20px;
         }
 
-        /* Section */
-        .section {
-            margin-bottom: 50px;
-        }
+        .section { margin-bottom: 50px; }
 
         .section-header {
             display: flex;
@@ -215,29 +198,24 @@
         .section-icon.policy { background: linear-gradient(135deg, var(--category-3), #10b981); }
         .section-icon.gossip { background: linear-gradient(135deg, var(--category-4), #f97316); }
 
-        .section-title {
-            flex: 1;
-        }
+        .section-title { flex: 1; }
+        .section-title h2 { font-size: 1.4rem; font-weight: 700; margin-bottom: 4px; }
+        .section-title p { font-size: 0.85rem; color: var(--text-muted); }
 
-        .section-title h2 {
-            font-size: 1.4rem;
-            font-weight: 700;
-            margin-bottom: 4px;
-        }
-
-        .section-title p {
-            font-size: 0.85rem;
-            color: var(--text-muted);
-        }
-
-        /* News Grid */
         .news-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            grid-template-columns: repeat(3, 1fr);
             gap: 20px;
         }
 
-        /* News Card */
+        @media (max-width: 1024px) {
+            .news-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        @media (max-width: 768px) {
+            .news-grid { grid-template-columns: 1fr; }
+        }
+
         .news-card {
             background: var(--bg-card);
             border: 1px solid var(--border);
@@ -246,14 +224,14 @@
             transition: all 0.3s ease;
             position: relative;
             overflow: hidden;
+            display: flex;
+            flex-direction: column;
         }
 
         .news-card::before {
             content: '';
             position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
+            top: 0; left: 0; right: 0;
             height: 3px;
             background: linear-gradient(90deg, var(--primary), var(--secondary));
             opacity: 0;
@@ -266,9 +244,7 @@
             box-shadow: var(--shadow);
         }
 
-        .news-card:hover::before {
-            opacity: 1;
-        }
+        .news-card:hover::before { opacity: 1; }
 
         .card-header {
             display: flex;
@@ -302,6 +278,7 @@
             margin-top: 8px;
             font-size: 0.75rem;
             color: var(--text-muted);
+            flex-wrap: wrap;
         }
 
         .card-meta span {
@@ -343,16 +320,11 @@
             color: var(--text-secondary);
             line-height: 1.7;
             margin-bottom: 12px;
+            flex: 1;
         }
 
-        .card-summary strong {
-            color: var(--text-primary);
-        }
-
-        .highlight-text {
-            color: var(--accent);
-            font-weight: 500;
-        }
+        .card-summary strong { color: var(--text-primary); }
+        .highlight-text { color: var(--accent); font-weight: 500; }
 
         .link-btn {
             display: inline-flex;
@@ -366,6 +338,7 @@
             font-size: 0.85rem;
             font-weight: 500;
             transition: all 0.3s ease;
+            align-self: flex-start;
         }
 
         .link-btn:hover {
@@ -373,7 +346,6 @@
             box-shadow: 0 4px 15px rgba(99, 102, 241, 0.4);
         }
 
-        /* Heat Indicator */
         .heat-indicator {
             display: flex;
             align-items: center;
@@ -402,7 +374,6 @@
             font-weight: 600;
         }
 
-        /* Footer */
         footer {
             margin-top: 60px;
             padding: 40px 20px;
@@ -461,14 +432,8 @@
             border-radius: 4px;
         }
 
-        .footer-info {
-            text-align: right;
-        }
-
-        .footer-info p {
-            font-size: 0.85rem;
-            color: var(--text-muted);
-        }
+        .footer-info { text-align: right; }
+        .footer-info p { font-size: 0.85rem; color: var(--text-muted); }
 
         .update-time {
             display: flex;
@@ -479,46 +444,23 @@
             color: var(--text-muted);
         }
 
-        /* Responsive */
         @media (max-width: 768px) {
-            .top-bar-content {
-                flex-wrap: wrap;
-                gap: 12px;
-            }
-
-            .top-partners {
-                width: 100%;
-                justify-content: center;
-            }
-
-            .news-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .section-header {
-                flex-wrap: wrap;
-            }
-
-            .footer-bottom {
-                flex-direction: column;
-                text-align: center;
-            }
-
-            .footer-info {
-                text-align: center;
-            }
+            .top-bar-content { flex-wrap: wrap; gap: 12px; }
+            .top-partners { width: 100%; justify-content: center; }
+            .section-header { flex-wrap: wrap; }
+            .footer-bottom { flex-direction: column; text-align: center; }
+            .footer-info { text-align: center; }
         }
     </style>
 </head>
 <body>
     <div class="bg-animation"></div>
 
-    <!-- Top Bar -->
     <div class="top-bar">
         <div class="top-bar-content">
             <div class="brand">
                 <div class="brand-icon">🎵</div>
-                <div class="brand-text">每日音乐热点</div>
+                <div class="brand-text">Linson·国际音乐前哨</div>
             </div>
             <div class="top-partners">
                 <div class="top-partner">
@@ -533,7 +475,6 @@
         </div>
     </div>
 
-    <!-- Navigation -->
     <nav class="nav-bar">
         <div class="nav-content">
             <div class="nav-item active">音乐前沿</div>
@@ -560,9 +501,9 @@
                     <div class="card-header">
                         <div class="rank-badge">1</div>
                         <div style="flex: 1;">
-                            <div class="card-title">2026全球音乐产业报告：流媒体收入突破300亿美元，AI音乐版权争议持续升温</div>
+                            <div class="card-title">2026全球音乐产业报告：流媒体收入突破300亿美元</div>
                             <div class="card-meta">
-                                <span>📰 IFPI国际唱片业协会</span>
+                                <span>📰 IFPI</span>
                                 <span>📅 2026.04.22</span>
                                 <div class="heat-indicator">
                                     <span>🔥</span>
@@ -575,20 +516,19 @@
                     <div class="tags">
                         <span class="tag">行业报告</span>
                         <span class="tag">流媒体</span>
-                        <span class="tag">AI音乐</span>
                         <span class="tag source">IFPI</span>
                     </div>
                     <div class="card-summary">
-                        <strong>前沿动态：</strong>国际唱片业协会(IFPI)发布《2026全球音乐产业报告》，全球录制音乐市场流媒体收入首次突破<span class="highlight-text">300亿美元</span>，同比增长12.3%。报告同时指出，AI生成音乐的版权归属问题已成为行业最大争议点，多国正在制定相关法规。
+                        <strong>前沿动态：</strong>国际唱片业协会(IFPI)发布《2026全球音乐产业报告》，全球录制音乐市场流媒体收入首次突破<span class="highlight-text">300亿美元</span>，同比增长12.3%。
                     </div>
-                    <a href="https://www.ifpi.org" class="link-btn" target="_blank">查看详情 →</a>
+                    <a href="https://www.ifpi.org" class="link-btn" target="_blank" rel="noopener noreferrer">查看详情 →</a>
                 </article>
 
                 <article class="news-card">
                     <div class="card-header">
                         <div class="rank-badge">2</div>
                         <div style="flex: 1;">
-                            <div class="card-title">郎朗2026世界巡演「黄河之子」欧洲站开票即售罄，柏林爱乐大厅加场</div>
+                            <div class="card-title">郎朗2026世界巡演「黄河之子」欧洲站开票即售罄</div>
                             <div class="card-meta">
                                 <span>📰 柏林爱乐</span>
                                 <span>📅 2026.04.20</span>
@@ -603,20 +543,19 @@
                     <div class="tags">
                         <span class="tag">古典音乐</span>
                         <span class="tag">世界巡演</span>
-                        <span class="tag">钢琴</span>
                         <span class="tag source">柏林爱乐</span>
                     </div>
                     <div class="card-summary">
-                        <strong>前沿动态：</strong>郎朗2026年世界巡演「黄河之子」欧洲站正式开票，柏林爱乐大厅、维也纳金色大厅等顶级场馆<span class="highlight-text">开票当日即售罄</span>。应观众强烈要求，柏林站宣布加场，成为首位在柏林爱乐连续演出三晚的中国钢琴家。
+                        <strong>前沿动态：</strong>郎朗2026年世界巡演「黄河之子」欧洲站正式开票，柏林爱乐大厅、维也纳金色大厅等顶级场馆<span class="highlight-text">开票当日即售罄</span>。
                     </div>
-                    <a href="https://www.berliner-philharmoniker.de" class="link-btn" target="_blank">查看详情 →</a>
+                    <a href="https://www.berliner-philharmoniker.de" class="link-btn" target="_blank" rel="noopener noreferrer">查看详情 →</a>
                 </article>
 
                 <article class="news-card">
                     <div class="card-header">
                         <div class="rank-badge">3</div>
                         <div style="flex: 1;">
-                            <div class="card-title">Suno AI发布V4版本：支持5分钟完整歌曲生成，音质接近商业发行水准</div>
+                            <div class="card-title">Suno AI发布V4版本：支持5分钟完整歌曲生成</div>
                             <div class="card-meta">
                                 <span>📰 TechCrunch</span>
                                 <span>📅 2026.04.18</span>
@@ -630,21 +569,20 @@
                     </div>
                     <div class="tags">
                         <span class="tag">AI音乐</span>
-                        <span class="tag">科技创新</span>
                         <span class="tag highlight">重磅更新</span>
                         <span class="tag source">Suno</span>
                     </div>
                     <div class="card-summary">
-                        <strong>前沿动态：</strong>AI音乐生成平台Suno正式发布<span class="highlight-text">V4版本</span>，支持生成最长5分钟的完整歌曲，音质大幅提升接近商业发行水准。新增"风格迁移"功能，可将任意音频转换为指定风格，引发音乐创作领域新一轮讨论。
+                        <strong>前沿动态：</strong>AI音乐生成平台Suno正式发布<span class="highlight-text">V4版本</span>，支持生成最长5分钟的完整歌曲，音质大幅提升接近商业发行水准。
                     </div>
-                    <a href="https://www.suno.ai" class="link-btn" target="_blank">查看详情 →</a>
+                    <a href="https://suno.com" class="link-btn" target="_blank" rel="noopener noreferrer">查看详情 →</a>
                 </article>
 
                 <article class="news-card">
                     <div class="card-header">
                         <div class="rank-badge">4</div>
                         <div style="flex: 1;">
-                            <div class="card-title">北京交响乐团《中华四韵》首演：叶聪执棒，五大国乐名家齐聚国家大剧院</div>
+                            <div class="card-title">北京交响乐团《中华四韵》首演：叶聪执棒国家大剧院</div>
                             <div class="card-meta">
                                 <span>📰 国家大剧院</span>
                                 <span>📅 2026.04.22</span>
@@ -659,13 +597,66 @@
                     <div class="tags">
                         <span class="tag">古典音乐</span>
                         <span class="tag">国乐</span>
-                        <span class="tag">首演</span>
-                        <span class="tag source">北京交响乐团</span>
+                        <span class="tag source">国家大剧院</span>
                     </div>
                     <div class="card-summary">
-                        <strong>前沿动态：</strong>4月22日晚，指挥家<strong>叶聪</strong>执棒北京交响乐团，携手<strong>陈雷激、宋艺博、白凯、张维良、冯满天</strong>5位国乐名家，在国家大剧院·音乐厅奏响北京交响乐团年度重点力作<span class="highlight-text">《中华四韵》</span>。
+                        <strong>前沿动态：</strong>指挥家<strong>叶聪</strong>执棒北京交响乐团，携手5位国乐名家，在国家大剧院奏响年度重点力作<span class="highlight-text">《中华四韵》</span>。
                     </div>
-                    <a href="https://www.chncpa.org" class="link-btn" target="_blank">查看详情 →</a>
+                    <a href="https://www.chncpa.org" class="link-btn" target="_blank" rel="noopener noreferrer">查看详情 →</a>
+                </article>
+
+                <article class="news-card">
+                    <div class="card-header">
+                        <div class="rank-badge">5</div>
+                        <div style="flex: 1;">
+                            <div class="card-title">全球音乐教育协会2026年度国际艺术研讨会启动报名</div>
+                            <div class="card-meta">
+                                <span>📰 GMEA</span>
+                                <span>📅 2026.04.15</span>
+                                <div class="heat-indicator">
+                                    <span>🔥</span>
+                                    <div class="heat-bar"><div class="heat-fill" style="width:80%"></div></div>
+                                    <span class="heat-value">80%</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tags">
+                        <span class="tag">音乐教育</span>
+                        <span class="tag">国际会议</span>
+                        <span class="tag source">GMEA</span>
+                    </div>
+                    <div class="card-summary">
+                        <strong>前沿动态：</strong><span class="highlight-text">全球音乐教育协会（GMEA）</span>2026年度国际艺术研讨会已启动报名，面向全球音乐教育工作者开放。
+                    </div>
+                    <a href="http://www.gmeaa.com/" class="link-btn" target="_blank" rel="noopener noreferrer">查看详情 →</a>
+                </article>
+
+                <article class="news-card">
+                    <div class="card-header">
+                        <div class="rank-badge">6</div>
+                        <div style="flex: 1;">
+                            <div class="card-title">穆皇天文化：澳门钢琴邀请赛16周年持续招募中</div>
+                            <div class="card-meta">
+                                <span>📰 穆皇天文化</span>
+                                <span>📅 2026.04</span>
+                                <div class="heat-indicator">
+                                    <span>🔥</span>
+                                    <div class="heat-bar"><div class="heat-fill" style="width:78%"></div></div>
+                                    <span class="heat-value">78%</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tags">
+                        <span class="tag">音乐教育</span>
+                        <span class="tag">国际比赛</span>
+                        <span class="tag source">穆皇天文化</span>
+                    </div>
+                    <div class="card-summary">
+                        <strong>前沿动态：</strong><span class="highlight-text">穆皇天文化</span>旗下澳门钢琴邀请赛创始于2010年，已成功举办16届，为全球青少年音乐人才提供展示舞台。
+                    </div>
+                    <a href="http://www.sky-culture.com/" class="link-btn" target="_blank" rel="noopener noreferrer">查看详情 →</a>
                 </article>
             </div>
         </section>
@@ -684,7 +675,7 @@
                     <div class="card-header">
                         <div class="rank-badge">1</div>
                         <div style="flex: 1;">
-                            <div class="card-title">【立夏活动方案】音乐机构"夏日音浪"主题音乐会策划全案</div>
+                            <div class="card-title">【立夏活动】音乐机构"夏日音浪"主题音乐会策划全案</div>
                             <div class="card-meta">
                                 <span>📰 美育网</span>
                                 <span>📅 2026.04.24</span>
@@ -703,16 +694,16 @@
                         <span class="tag source">美育网</span>
                     </div>
                     <div class="card-summary">
-                        <strong>案例亮点：</strong>某知名音乐连锁机构立夏主题音乐会<span class="highlight-text">单场招生转化率达35%</span>。活动包含：① 学员夏日音乐作品展 ② 亲子音乐互动游戏 ③ 限时报名优惠 ④ 老带新奖励翻倍。附完整执行手册和物料清单。
+                        <strong>案例亮点：</strong>某知名音乐连锁机构立夏主题音乐会<span class="highlight-text">单场招生转化率达35%</span>。活动包含学员作品展、亲子互动、限时优惠、老带新奖励。
                     </div>
-                    <a href="#" class="link-btn" target="_blank">查看详情 →</a>
+                    <a href="https://www.mei yu.com" class="link-btn" target="_blank" rel="noopener noreferrer">查看详情 →</a>
                 </article>
 
                 <article class="news-card">
                     <div class="card-header">
                         <div class="rank-badge">2</div>
                         <div style="flex: 1;">
-                            <div class="card-title">差异化教学服务：从"教乐器"到"音乐素养教育"的转型实践</div>
+                            <div class="card-title">差异化教学：从"教乐器"到"音乐素养教育"转型实践</div>
                             <div class="card-meta">
                                 <span>📰 中国新闻网</span>
                                 <span>📅 2026.04.20</span>
@@ -727,20 +718,19 @@
                     <div class="tags">
                         <span class="tag">教学创新</span>
                         <span class="tag">差异化</span>
-                        <span class="tag">转型案例</span>
                         <span class="tag source">中国新闻网</span>
                     </div>
                     <div class="card-summary">
-                        <strong>前沿动态：</strong>杭州某钢琴工作室转型"音乐素养中心"，推出<span class="highlight-text">"听-唱-弹-创"四维课程</span>，客单价提升60%，续费率从45%提升至78%。核心策略：① 增加音乐欣赏课 ② 定期举办学员创作分享会 ③ 家长音乐沙龙。
+                        <strong>前沿动态：</strong>杭州某钢琴工作室转型"音乐素养中心"，推出<span class="highlight-text">"听-唱-弹-创"四维课程</span>，客单价提升60%，续费率从45%提升至78%。
                     </div>
-                    <a href="#" class="link-btn" target="_blank">查看详情 →</a>
+                    <a href="https://www.chinanews.com" class="link-btn" target="_blank" rel="noopener noreferrer">查看详情 →</a>
                 </article>
 
                 <article class="news-card">
                     <div class="card-header">
                         <div class="rank-badge">3</div>
                         <div style="flex: 1;">
-                            <div class="card-title">【招生方案】暑期班"早鸟+拼团+转介绍"组合拳，3天招满120人</div>
+                            <div class="card-title">【招生方案】暑期班"早鸟+拼团+转介绍"组合拳</div>
                             <div class="card-meta">
                                 <span>📰 微言教育</span>
                                 <span>📅 2026.04.18</span>
@@ -759,16 +749,16 @@
                         <span class="tag source">微言教育</span>
                     </div>
                     <div class="card-summary">
-                        <strong>方案拆解：</strong>深圳某艺术培训中心暑期招生<span class="highlight-text">3天满额</span>。策略组合：① 早鸟价（前30名8折）② 2人拼团各减200 ③ 转介绍成功奖励300元课时费 ④ 限时赠送乐器教材包。附朋友圈文案模板和海报设计。
+                        <strong>方案拆解：</strong>深圳某艺术培训中心暑期招生<span class="highlight-text">3天满额</span>。策略：早鸟价8折、2人拼团各减200、转介绍奖励300元课时费。
                     </div>
-                    <a href="#" class="link-btn" target="_blank">查看详情 →</a>
+                    <a href="https://www.moe.gov.cn" class="link-btn" target="_blank" rel="noopener noreferrer">查看详情 →</a>
                 </article>
 
                 <article class="news-card">
                     <div class="card-header">
                         <div class="rank-badge">4</div>
                         <div style="flex: 1;">
-                            <div class="card-title">打卡激励政策设计：21天练琴挑战，学员活跃度提升3倍</div>
+                            <div class="card-title">打卡激励政策：21天练琴挑战，活跃度提升3倍</div>
                             <div class="card-meta">
                                 <span>📰 广东教育</span>
                                 <span>📅 2026.04.15</span>
@@ -783,13 +773,68 @@
                     <div class="tags">
                         <span class="tag">学员管理</span>
                         <span class="tag">激励机制</span>
-                        <span class="tag">打卡系统</span>
                         <span class="tag source">广东教育</span>
                     </div>
                     <div class="card-summary">
-                        <strong>实操分享：</strong>广州某琴行推出<span class="highlight-text">"21天练琴打卡挑战"</span>，连续打卡奖励：7天送乐谱、14天送调律服务、21天送大师课。学员日均练琴时长从25分钟提升至65分钟，家长满意度提升40%。
+                        <strong>实操分享：</strong>广州某琴行推出<span class="highlight-text">"21天练琴打卡挑战"</span>，连续打卡奖励：7天送乐谱、14天送调律服务、21天送大师课。
                     </div>
-                    <a href="#" class="link-btn" target="_blank">查看详情 →</a>
+                    <a href="http://edu.gd.gov.cn" class="link-btn" target="_blank" rel="noopener noreferrer">查看详情 →</a>
+                </article>
+
+                <article class="news-card">
+                    <div class="card-header">
+                        <div class="rank-badge">5</div>
+                        <div style="flex: 1;">
+                            <div class="card-title">【母亲节活动】"我和妈妈有个音乐会"亲子活动方案</div>
+                            <div class="card-meta">
+                                <span>📰 美育网</span>
+                                <span>📅 2026.04.10</span>
+                                <div class="heat-indicator">
+                                    <span>🔥</span>
+                                    <div class="heat-bar"><div class="heat-fill" style="width:83%"></div></div>
+                                    <span class="heat-value">83%</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tags">
+                        <span class="tag">节日活动</span>
+                        <span class="tag">亲子</span>
+                        <span class="tag highlight">母亲节</span>
+                        <span class="tag source">美育网</span>
+                    </div>
+                    <div class="card-summary">
+                        <strong>活动亮点：</strong>母亲节特别活动<span class="highlight-text">学员为妈妈演奏+亲子合奏</span>，现场温馨感人，转化率42%，家长自发朋友圈传播。
+                    </div>
+                    <a href="https://www.mei yu.com" class="link-btn" target="_blank" rel="noopener noreferrer">查看详情 →</a>
+                </article>
+
+                <article class="news-card">
+                    <div class="card-header">
+                        <div class="rank-badge">6</div>
+                        <div style="flex: 1;">
+                            <div class="card-title">机构抖音招生：单月获客200+的短视频运营秘籍</div>
+                            <div class="card-meta">
+                                <span>📰 搜狐教育</span>
+                                <span>📅 2026.04.08</span>
+                                <div class="heat-indicator">
+                                    <span>🔥</span>
+                                    <div class="heat-bar"><div class="heat-fill" style="width:86%"></div></div>
+                                    <span class="heat-value">86%</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tags">
+                        <span class="tag">短视频</span>
+                        <span class="tag">抖音招生</span>
+                        <span class="tag">新媒体</span>
+                        <span class="tag source">搜狐教育</span>
+                    </div>
+                    <div class="card-summary">
+                        <strong>运营秘籍：</strong>成都某琴行通过<span class="highlight-text">抖音短视频矩阵</span>，单月获客200+。核心：① 学员演奏展示 ② 老师教学片段 ③ 学员进步对比。
+                    </div>
+                    <a href="https://learning.sohu.com" class="link-btn" target="_blank" rel="noopener noreferrer">查看详情 →</a>
                 </article>
             </div>
         </section>
@@ -808,7 +853,7 @@
                     <div class="card-header">
                         <div class="rank-badge">1</div>
                         <div style="flex: 1;">
-                            <div class="card-title">教育部：2026年美育纳入中考范围扩大至全国，艺术素质测评细则发布</div>
+                            <div class="card-title">教育部：2026年美育纳入中考范围扩大至全国</div>
                             <div class="card-meta">
                                 <span>📰 新华社</span>
                                 <span>📅 2026.04.22</span>
@@ -827,16 +872,16 @@
                         <span class="tag source">新华社</span>
                     </div>
                     <div class="card-summary">
-                        <strong>政策要点：</strong>教育部正式发布《中小学生艺术素质测评办法（2026版）》，明确<span class="highlight-text">2026年秋季学期起</span>，美育纳入中考范围扩大至全国。测评内容包括：艺术课程学习、艺术活动参与、艺术特长展示三部分，总分计入中考成绩。
+                        <strong>政策要点：</strong>教育部正式发布《中小学生艺术素质测评办法（2026版）》，明确<span class="highlight-text">2026年秋季学期起</span>，美育纳入中考范围扩大至全国。
                     </div>
-                    <a href="#" class="link-btn" target="_blank">查看详情 →</a>
+                    <a href="http://www.moe.gov.cn" class="link-btn" target="_blank" rel="noopener noreferrer">查看详情 →</a>
                 </article>
 
                 <article class="news-card">
                     <div class="card-header">
                         <div class="rank-badge">2</div>
                         <div style="flex: 1;">
-                            <div class="card-title">广东省教育厅：非学科类校外培训机构预收费监管新规出台</div>
+                            <div class="card-title">广东省：非学科类校外培训机构预收费监管新规</div>
                             <div class="card-meta">
                                 <span>📰 广东省教育厅</span>
                                 <span>📅 2026.04.20</span>
@@ -855,18 +900,18 @@
                         <span class="tag source">广东省教育厅</span>
                     </div>
                     <div class="card-summary">
-                        <strong>新规要点：</strong>广东省发布《非学科类校外培训机构预收费资金监管办法》，要求<span class="highlight-text">一次性收费不超过3个月或60课时</span>，预收费须全部纳入银行监管账户。违规机构将被列入黑名单，暂停招生资格。
+                        <strong>新规要点：</strong>广东省发布《非学科类校外培训机构预收费资金监管办法》，要求<span class="highlight-text">一次性收费不超过3个月或60课时</span>。
                     </div>
-                    <a href="#" class="link-btn" target="_blank">查看详情 →</a>
+                    <a href="http://edu.gd.gov.cn" class="link-btn" target="_blank" rel="noopener noreferrer">查看详情 →</a>
                 </article>
 
                 <article class="news-card">
                     <div class="card-header">
                         <div class="rank-badge">3</div>
                         <div style="flex: 1;">
-                            <div class="card-title">文旅部：演出市场管理条例修订，小型音乐演出审批流程简化</div>
+                            <div class="card-title">文旅部：小型音乐演出审批流程简化，7个工作日办结</div>
                             <div class="card-meta">
-                                <span>📰 文旅部官网</span>
+                                <span>📰 文旅部</span>
                                 <span>📅 2026.04.18</span>
                                 <div class="heat-indicator">
                                     <span>🔥</span>
@@ -883,9 +928,9 @@
                         <span class="tag source">文旅部</span>
                     </div>
                     <div class="card-summary">
-                        <strong>政策解读：</strong>文旅部修订《营业性演出管理条例实施细则》，<span class="highlight-text">500人以下小型音乐演出</span>审批时限从20个工作日缩短至7个工作日，申报材料减少40%。利好独立音乐人和小型演出场馆。
+                        <strong>政策解读：</strong>文旅部修订《营业性演出管理条例实施细则》，<span class="highlight-text">500人以下小型音乐演出</span>审批时限从20个工作日缩短至7个工作日。
                     </div>
-                    <a href="#" class="link-btn" target="_blank">查看详情 →</a>
+                    <a href="https://www.mct.gov.cn" class="link-btn" target="_blank" rel="noopener noreferrer">查看详情 →</a>
                 </article>
 
                 <article class="news-card">
@@ -911,9 +956,65 @@
                         <span class="tag source">中国音协</span>
                     </div>
                     <div class="card-summary">
-                        <strong>新规亮点：</strong>中国音乐家协会发布2026年考级工作通知，<span class="highlight-text">线上考级正式成为主流形式</span>，覆盖钢琴、小提琴、古筝等全部科目。AI辅助评审系统上线，考级视频云端存储，证书电子化发放。
+                        <strong>新规亮点：</strong>中国音乐家协会发布2026年考级工作通知，<span class="highlight-text">线上考级正式成为主流形式</span>，AI辅助评审系统上线。
                     </div>
-                    <a href="#" class="link-btn" target="_blank">查看详情 →</a>
+                    <a href="http://www.chnmusic.org" class="link-btn" target="_blank" rel="noopener noreferrer">查看详情 →</a>
+                </article>
+
+                <article class="news-card">
+                    <div class="card-header">
+                        <div class="rank-badge">5</div>
+                        <div style="flex: 1;">
+                            <div class="card-title">国务院：校外培训行政处罚暂行办法实施细则发布</div>
+                            <div class="card-meta">
+                                <span>📰 中国政府网</span>
+                                <span>📅 2026.04.12</span>
+                                <div class="heat-indicator">
+                                    <span>🔥</span>
+                                    <div class="heat-bar"><div class="heat-fill" style="width:87%"></div></div>
+                                    <span class="heat-value">87%</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tags">
+                        <span class="tag">行政处罚</span>
+                        <span class="tag">校外培训</span>
+                        <span class="tag">监管</span>
+                        <span class="tag source">中国政府网</span>
+                    </div>
+                    <div class="card-summary">
+                        <strong>政策要点：</strong>国务院发布《校外培训行政处罚暂行办法实施细则》，明确<span class="highlight-text">无证办学、虚假宣传、价格欺诈</span>等违法行为的处罚标准。
+                    </div>
+                    <a href="http://www.gov.cn" class="link-btn" target="_blank" rel="noopener noreferrer">查看详情 →</a>
+                </article>
+
+                <article class="news-card">
+                    <div class="card-header">
+                        <div class="rank-badge">6</div>
+                        <div style="flex: 1;">
+                            <div class="card-title">国家发改委：文化艺术培训纳入鼓励类产业目录</div>
+                            <div class="card-meta">
+                                <span>📰 国家发改委</span>
+                                <span>📅 2026.04.10</span>
+                                <div class="heat-indicator">
+                                    <span>🔥</span>
+                                    <div class="heat-bar"><div class="heat-fill" style="width:81%"></div></div>
+                                    <span class="heat-value">81%</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tags">
+                        <span class="tag">产业政策</span>
+                        <span class="tag">鼓励类</span>
+                        <span class="tag">利好</span>
+                        <span class="tag source">国家发改委</span>
+                    </div>
+                    <div class="card-summary">
+                        <strong>政策利好：</strong>国家发改委修订《产业结构调整指导目录》，<span class="highlight-text">文化艺术培训纳入鼓励类产业</span>，享受税收优惠和融资支持。
+                    </div>
+                    <a href="https://www.ndrc.gov.cn" class="link-btn" target="_blank" rel="noopener noreferrer">查看详情 →</a>
                 </article>
             </div>
         </section>
@@ -932,7 +1033,7 @@
                     <div class="card-header">
                         <div class="rank-badge">1</div>
                         <div style="flex: 1;">
-                            <div class="card-title">某知名钢琴家演出时忘谱，现场即兴创作反而成为经典版本</div>
+                            <div class="card-title">某知名钢琴家演出时忘谱，现场即兴创作成经典</div>
                             <div class="card-meta">
                                 <span>📰 音乐周报</span>
                                 <span>📅 2026.04.23</span>
@@ -951,9 +1052,9 @@
                         <span class="tag source">音乐周报</span>
                     </div>
                     <div class="card-summary">
-                        <strong>趣闻：</strong>某国际知名钢琴家在演奏李斯特《钟》时突然忘谱，情急之下<span class="highlight-text">现场即兴发挥</span>，反而创造出全新华彩段落。观众以为这是特别设计，事后这段"即兴版"被乐迷称为"神级救场"，视频在B站播放量破500万。
+                        <strong>趣闻：</strong>某国际知名钢琴家在演奏李斯特《钟》时突然忘谱，情急之下<span class="highlight-text">现场即兴发挥</span>，反而创造出全新华彩段落。
                     </div>
-                    <a href="#" class="link-btn" target="_blank">查看详情 →</a>
+                    <a href="https://www.bilibili.com" class="link-btn" target="_blank" rel="noopener noreferrer">查看详情 →</a>
                 </article>
 
                 <article class="news-card">
@@ -979,16 +1080,16 @@
                         <span class="tag source">澎湃新闻</span>
                     </div>
                     <div class="card-summary">
-                        <strong>故事：</strong>上海某琴行保洁阿姨被学员发现<span class="highlight-text">午休时在空教室弹奏肖邦</span>，技艺精湛。深扒发现她竟是30年前中央音乐学院钢琴系毕业生，因家庭变故放弃演奏事业。现在她免费指导琴行学员，被称为"扫地僧阿姨"。
+                        <strong>故事：</strong>上海某琴行保洁阿姨被学员发现<span class="highlight-text">午休时在空教室弹奏肖邦</span>，技艺精湛。竟是30年前中央音乐学院钢琴系毕业生。
                     </div>
-                    <a href="#" class="link-btn" target="_blank">查看详情 →</a>
+                    <a href="https://www.thepaper.cn" class="link-btn" target="_blank" rel="noopener noreferrer">查看详情 →</a>
                 </article>
 
                 <article class="news-card">
                     <div class="card-header">
                         <div class="rank-badge">3</div>
                         <div style="flex: 1;">
-                            <div class="card-title">音乐节现场突降暴雨，万名观众齐唱《晴天》成年度名场面</div>
+                            <div class="card-title">音乐节现场突降暴雨，万名观众齐唱《晴天》成名场面</div>
                             <div class="card-meta">
                                 <span>📰 搜狐娱乐</span>
                                 <span>📅 2026.04.19</span>
@@ -1007,9 +1108,9 @@
                         <span class="tag source">搜狐娱乐</span>
                     </div>
                     <div class="card-summary">
-                        <strong>趣闻：</strong>某户外音乐节突遭暴雨，演出被迫中断。万名观众在雨中自发齐唱周杰伦《晴天》，<span class="highlight-text">"从前从前有个人爱你很久"</span>响彻全场。视频刷爆全网，网友："这是最浪漫的翻车"。
+                        <strong>趣闻：</strong>某户外音乐节突遭暴雨，万名观众在雨中自发齐唱周杰伦《晴天》，<span class="highlight-text">"从前从前有个人爱你很久"</span>响彻全场。
                     </div>
-                    <a href="#" class="link-btn" target="_blank">查看详情 →</a>
+                    <a href="https://yule.sohu.com" class="link-btn" target="_blank" rel="noopener noreferrer">查看详情 →</a>
                 </article>
 
                 <article class="news-card">
@@ -1035,15 +1136,70 @@
                         <span class="tag source">上观新闻</span>
                     </div>
                     <div class="card-summary">
-                        <strong>实验：</strong>某音乐学院教授用AI生成作品参加入学考试盲评，<span class="highlight-text">得分超过70%考生</span>。考官评语："和声丰富、结构完整，比许多考生更有音乐性"。该实验引发音乐教育界热议：AI时代如何定义"音乐才华"？
+                        <strong>实验：</strong>某音乐学院教授用AI生成作品参加入学考试盲评，<span class="highlight-text">得分超过70%考生</span>。考官："比许多考生更有音乐性"。
                     </div>
-                    <a href="#" class="link-btn" target="_blank">查看详情 →</a>
+                    <a href="https://www.jfdaily.com" class="link-btn" target="_blank" rel="noopener noreferrer">查看详情 →</a>
+                </article>
+
+                <article class="news-card">
+                    <div class="card-header">
+                        <div class="rank-badge">5</div>
+                        <div style="flex: 1;">
+                            <div class="card-title">古典音乐会上，观众手机铃声竟是演奏曲目同款</div>
+                            <div class="card-meta">
+                                <span>📰 网易娱乐</span>
+                                <span>📅 2026.04.14</span>
+                                <div class="heat-indicator">
+                                    <span>🔥</span>
+                                    <div class="heat-bar"><div class="heat-fill" style="width:79%"></div></div>
+                                    <span class="heat-value">79%</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tags">
+                        <span class="tag">演出趣闻</span>
+                        <span class="tag">巧合</span>
+                        <span class="tag">搞笑</span>
+                        <span class="tag source">网易娱乐</span>
+                    </div>
+                    <div class="card-summary">
+                        <strong>趣闻：</strong>某交响乐团演奏《命运交响曲》时，观众手机突然响起，铃声<span class="highlight-text">恰好也是《命运交响曲》</span>，全场爆笑，指挥家也忍俊不禁。
+                    </div>
+                    <a href="https://ent.163.com" class="link-btn" target="_blank" rel="noopener noreferrer">查看详情 →</a>
+                </article>
+
+                <article class="news-card">
+                    <div class="card-header">
+                        <div class="rank-badge">6</div>
+                        <div style="flex: 1;">
+                            <div class="card-title">钢琴家演奏时琴弦断裂，用仅剩的弦完成高难度华彩</div>
+                            <div class="card-meta">
+                                <span>📰 腾讯音乐</span>
+                                <span>📅 2026.04.12</span>
+                                <div class="heat-indicator">
+                                    <span>🔥</span>
+                                    <div class="heat-bar"><div class="heat-fill" style="width:82%"></div></div>
+                                    <span class="heat-value">82%</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tags">
+                        <span class="tag">演出事故</span>
+                        <span class="tag">神级救场</span>
+                        <span class="tag">专业素养</span>
+                        <span class="tag source">腾讯音乐</span>
+                    </div>
+                    <div class="card-summary">
+                        <strong>神级现场：</strong>钢琴家演奏拉赫玛尼诺夫时高音琴弦突然断裂，他<span class="highlight-text">临时调整指法</span>，用仅剩的弦完成了高难度华彩段落。
+                    </div>
+                    <a href="https://y.qq.com" class="link-btn" target="_blank" rel="noopener noreferrer">查看详情 →</a>
                 </article>
             </div>
         </section>
     </div>
 
-    <!-- Footer -->
     <footer>
         <div class="footer-content">
             <div class="footer-sources">
