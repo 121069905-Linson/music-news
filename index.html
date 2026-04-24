@@ -232,6 +232,16 @@
 
         .news-card:hover::before { opacity: 1; }
 
+        .news-card.featured {
+            border: 2px solid rgba(245, 158, 11, 0.3);
+            background: linear-gradient(135deg, #fffbeb, #ffffff);
+        }
+
+        .news-card.featured::before {
+            opacity: 1;
+            background: linear-gradient(90deg, #f59e0b, #ef4444);
+        }
+
         .card-header {
             display: flex;
             gap: 12px;
@@ -250,6 +260,10 @@
             font-size: 0.9rem;
             flex-shrink: 0;
             color: white;
+        }
+
+        .rank-badge.hot {
+            background: linear-gradient(135deg, #f59e0b, #ef4444);
         }
 
         .card-title {
@@ -303,6 +317,12 @@
             color: var(--accent);
         }
 
+        .tag.weixin {
+            background: rgba(7, 193, 96, 0.1);
+            border-color: rgba(7, 193, 96, 0.2);
+            color: #07c160;
+        }
+
         .card-summary {
             font-size: 0.95rem;
             color: var(--text-secondary);
@@ -335,6 +355,15 @@
             box-shadow: 0 6px 20px rgba(45, 125, 70, 0.4);
         }
 
+        .link-btn.weixin {
+            background: linear-gradient(135deg, #07c160, #10b981);
+            box-shadow: 0 4px 15px rgba(7, 193, 96, 0.3);
+        }
+
+        .link-btn.weixin:hover {
+            box-shadow: 0 6px 20px rgba(7, 193, 96, 0.4);
+        }
+
         .heat-indicator {
             display: flex;
             align-items: center;
@@ -361,6 +390,41 @@
             font-size: 0.75rem;
             color: #ef4444;
             font-weight: 600;
+        }
+
+        .contact-banner {
+            background: linear-gradient(135deg, rgba(45, 125, 70, 0.1), rgba(14, 165, 233, 0.1));
+            border: 2px solid rgba(45, 125, 70, 0.2);
+            border-radius: 16px;
+            padding: 24px;
+            margin-top: 24px;
+            text-align: center;
+        }
+
+        .contact-banner h3 {
+            font-size: 1.2rem;
+            color: var(--primary);
+            margin-bottom: 12px;
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            flex-wrap: wrap;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 1rem;
+            color: var(--text-primary);
+        }
+
+        .contact-item span {
+            font-weight: 600;
+            color: var(--primary);
         }
 
         footer {
@@ -392,11 +456,15 @@
             font-size: 0.85rem;
             color: var(--text-secondary);
             transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
         }
 
         .source-tag:hover {
             border-color: var(--primary);
             color: var(--primary);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow);
         }
 
         .footer-bottom {
@@ -442,6 +510,7 @@
             .section-header { flex-wrap: wrap; }
             .footer-bottom { flex-direction: column; text-align: center; }
             .footer-info { text-align: center; }
+            .contact-info { flex-direction: column; gap: 12px; }
         }
     </style>
 </head>
@@ -461,115 +530,22 @@
 
     <nav class="nav-bar">
         <div class="nav-content">
-            <a href="#section-music" class="nav-item active">音乐前沿</a>
+            <a href="#section-music" class="nav-item active">音教前沿</a>
             <a href="#section-policy" class="nav-item">政策动向</a>
-            <a href="#section-gossip" class="nav-item">行业八卦</a>
-            <a href="#section-competition" class="nav-item">赛事动态</a>
             <a href="#section-international" class="nav-item">国际视野</a>
+            <a href="#section-competition" class="nav-item">赛事动态</a>
+            <a href="#section-gossip" class="nav-item">行业八卦</a>
         </div>
     </nav>
 
     <div class="container">
-        <!-- Section 1: 音乐前沿热点 -->
+        <!-- Section 1: 音教前沿 -->
         <section class="section" id="section-music">
             <div class="section-header">
-                <div class="section-icon music">🔥</div>
+                <div class="section-icon music">📚</div>
                 <div class="section-title">
-                    <h2>音乐前沿热点</h2>
-                    <p>全球音乐行业最新动态、演出资讯、艺术家动向</p>
-                </div>
-            </div>
-            <div class="news-grid">
-                <article class="news-card">
-                    <div class="card-header">
-                        <div class="rank-badge">1</div>
-                        <div style="flex: 1;">
-                            <div class="card-title">2024全球音乐产业报告：流媒体收入持续增长</div>
-                            <div class="card-meta">
-                                <span>📰 IFPI</span>
-                                <span>📅 2024</span>
-                                <div class="heat-indicator">
-                                    <span>🔥</span>
-                                    <div class="heat-bar"><div class="heat-fill" style="width:95%"></div></div>
-                                    <span class="heat-value">95%</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="tags">
-                        <span class="tag">行业报告</span>
-                        <span class="tag">流媒体</span>
-                        <span class="tag source">IFPI</span>
-                    </div>
-                    <div class="card-summary">
-                        <strong>前沿动态：</strong>国际唱片业协会(IFPI)发布年度报告，全球录制音乐市场<span class="highlight-text">连续第9年增长</span>，流媒体成为主要驱动力。
-                    </div>
-                    <a href="https://www.ifpi.org" class="link-btn" target="_blank" rel="noopener noreferrer">查看详情 →</a>
-                </article>
-
-                <article class="news-card">
-                    <div class="card-header">
-                        <div class="rank-badge">2</div>
-                        <div style="flex: 1;">
-                            <div class="card-title">国家大剧院2024音乐季：多部中外经典作品将上演</div>
-                            <div class="card-meta">
-                                <span>📰 国家大剧院</span>
-                                <span>📅 2024</span>
-                                <div class="heat-indicator">
-                                    <span>🔥</span>
-                                    <div class="heat-bar"><div class="heat-fill" style="width:88%"></div></div>
-                                    <span class="heat-value">88%</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="tags">
-                        <span class="tag">古典音乐</span>
-                        <span class="tag">演出季</span>
-                        <span class="tag source">国家大剧院</span>
-                    </div>
-                    <div class="card-summary">
-                        <strong>前沿动态：</strong>国家大剧院发布2024音乐季演出计划，涵盖交响乐、歌剧、室内乐等多种形式，<span class="highlight-text">中外名家名团云集</span>。
-                    </div>
-                    <a href="https://www.chncpa.org" class="link-btn" target="_blank" rel="noopener noreferrer">查看详情 →</a>
-                </article>
-
-                <article class="news-card">
-                    <div class="card-header">
-                        <div class="rank-badge">3</div>
-                        <div style="flex: 1;">
-                            <div class="card-title">Suno AI音乐生成技术引发音乐产业热议</div>
-                            <div class="card-meta">
-                                <span>📰 Suno AI</span>
-                                <span>📅 2024</span>
-                                <div class="heat-indicator">
-                                    <span>🔥</span>
-                                    <div class="heat-bar"><div class="heat-fill" style="width:85%"></div></div>
-                                    <span class="heat-value">85%</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="tags">
-                        <span class="tag">AI音乐</span>
-                        <span class="tag">科技创新</span>
-                        <span class="tag source">Suno</span>
-                    </div>
-                    <div class="card-summary">
-                        <strong>前沿动态：</strong>AI音乐生成平台Suno引发行业关注，<span class="highlight-text">版权问题成为焦点</span>，各大音乐平台正在研究应对策略。
-                    </div>
-                    <a href="https://suno.com" class="link-btn" target="_blank" rel="noopener noreferrer">查看详情 →</a>
-                </article>
-            </div>
-        </section>
-
-        <!-- Section 2: 教育政策和行业动向 -->
-        <section class="section" id="section-policy">
-            <div class="section-header">
-                <div class="section-icon policy">📋</div>
-                <div class="section-title">
-                    <h2>教育政策与行业动向</h2>
-                    <p>教育政策解读、行业监管动态、美育发展趋势</p>
+                    <h2>音教前沿</h2>
+                    <p>音乐教育最新动态、教学方法创新、教育研究成果</p>
                 </div>
             </div>
             <div class="news-grid">
@@ -596,7 +572,7 @@
                         <span class="tag source">教育部</span>
                     </div>
                     <div class="card-summary">
-                        <strong>政策要点：</strong>教育部印发《关于全面实施学校美育浸润行动的通知》，<span class="highlight-text">将美育纳入人才培养全过程</span>，提升学生审美素养。
+                        <strong>前沿动态：</strong>教育部印发《关于全面实施学校美育浸润行动的通知》，<span class="highlight-text">将美育纳入人才培养全过程</span>，提升学生审美素养。
                     </div>
                     <a href="http://www.moe.gov.cn" class="link-btn" target="_blank" rel="noopener noreferrer">查看详情 →</a>
                 </article>
@@ -604,6 +580,72 @@
                 <article class="news-card">
                     <div class="card-header">
                         <div class="rank-badge">2</div>
+                        <div style="flex: 1;">
+                            <div class="card-title">中央音乐学院：音乐教育数字化转型实践</div>
+                            <div class="card-meta">
+                                <span>📰 中央音乐学院</span>
+                                <span>📅 2024</span>
+                                <div class="heat-indicator">
+                                    <span>🔥</span>
+                                    <div class="heat-bar"><div class="heat-fill" style="width:85%"></div></div>
+                                    <span class="heat-value">85%</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tags">
+                        <span class="tag">数字化</span>
+                        <span class="tag">教学创新</span>
+                        <span class="tag source">中央音乐学院</span>
+                    </div>
+                    <div class="card-summary">
+                        <strong>前沿动态：</strong>中央音乐学院推进<span class="highlight-text">音乐教育数字化转型</span>，建设智慧教室、在线课程平台，探索AI辅助音乐教学新模式。
+                    </div>
+                    <a href="https://www.ccom.edu.cn" class="link-btn" target="_blank" rel="noopener noreferrer">查看详情 →</a>
+                </article>
+
+                <article class="news-card">
+                    <div class="card-header">
+                        <div class="rank-badge">3</div>
+                        <div style="flex: 1;">
+                            <div class="card-title">上海音乐学院：跨学科音乐人才培养新模式</div>
+                            <div class="card-meta">
+                                <span>📰 上海音乐学院</span>
+                                <span>📅 2024</span>
+                                <div class="heat-indicator">
+                                    <span>🔥</span>
+                                    <div class="heat-bar"><div class="heat-fill" style="width:82%"></div></div>
+                                    <span class="heat-value">82%</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tags">
+                        <span class="tag">人才培养</span>
+                        <span class="tag">跨学科</span>
+                        <span class="tag source">上海音乐学院</span>
+                    </div>
+                    <div class="card-summary">
+                        <strong>前沿动态：</strong>上海音乐学院推出<span class="highlight-text">"音乐+科技""音乐+管理"</span>等跨学科培养项目，培养复合型音乐人才。
+                    </div>
+                    <a href="https://www.shcmusic.edu.cn" class="link-btn" target="_blank" rel="noopener noreferrer">查看详情 →</a>
+                </article>
+            </div>
+        </section>
+
+        <!-- Section 2: 教育政策和行业动向 -->
+        <section class="section" id="section-policy">
+            <div class="section-header">
+                <div class="section-icon policy">📋</div>
+                <div class="section-title">
+                    <h2>教育政策与行业动向</h2>
+                    <p>教育政策解读、行业监管动态、美育发展趋势</p>
+                </div>
+            </div>
+            <div class="news-grid">
+                <article class="news-card">
+                    <div class="card-header">
+                        <div class="rank-badge">1</div>
                         <div style="flex: 1;">
                             <div class="card-title">校外培训行政处罚暂行办法正式实施</div>
                             <div class="card-meta">
@@ -630,7 +672,7 @@
 
                 <article class="news-card">
                     <div class="card-header">
-                        <div class="rank-badge">3</div>
+                        <div class="rank-badge">2</div>
                         <div style="flex: 1;">
                             <div class="card-title">中国音协：全国音乐考级线上报名系统升级</div>
                             <div class="card-meta">
@@ -654,10 +696,237 @@
                     </div>
                     <a href="http://www.chnmusic.org" class="link-btn" target="_blank" rel="noopener noreferrer">查看详情 →</a>
                 </article>
+
+                <article class="news-card">
+                    <div class="card-header">
+                        <div class="rank-badge">3</div>
+                        <div style="flex: 1;">
+                            <div class="card-title">文旅部：营业性演出管理条例实施细则修订</div>
+                            <div class="card-meta">
+                                <span>📰 文旅部</span>
+                                <span>📅 2024</span>
+                                <div class="heat-indicator">
+                                    <span>🔥</span>
+                                    <div class="heat-bar"><div class="heat-fill" style="width:75%"></div></div>
+                                    <span class="heat-value">75%</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tags">
+                        <span class="tag">演出政策</span>
+                        <span class="tag">审批</span>
+                        <span class="tag source">文旅部</span>
+                    </div>
+                    <div class="card-summary">
+                        <strong>政策解读：</strong>文旅部修订演出管理条例实施细则，<span class="highlight-text">简化小型演出审批流程</span>，促进演出市场繁荣发展。
+                    </div>
+                    <a href="https://www.mct.gov.cn" class="link-btn" target="_blank" rel="noopener noreferrer">查看详情 →</a>
+                </article>
             </div>
         </section>
 
-        <!-- Section 3: 行业八卦 -->
+        <!-- Section 3: 国际视野 -->
+        <section class="section" id="section-international">
+            <div class="section-header">
+                <div class="section-icon international">🌍</div>
+                <div class="section-title">
+                    <h2>国际视野</h2>
+                    <p>国际音乐教育动态、海外院校资讯、全球音乐趋势</p>
+                </div>
+            </div>
+            <div class="news-grid">
+                <article class="news-card">
+                    <div class="card-header">
+                        <div class="rank-badge">1</div>
+                        <div style="flex: 1;">
+                            <div class="card-title">维也纳音乐与表演艺术大学：世界顶级音乐学府</div>
+                            <div class="card-meta">
+                                <span>📰 维也纳音乐大学</span>
+                                <span>📅 2024</span>
+                                <div class="heat-indicator">
+                                    <span>🔥</span>
+                                    <div class="heat-bar"><div class="heat-fill" style="width:92%"></div></div>
+                                    <span class="heat-value">92%</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tags">
+                        <span class="tag">国际院校</span>
+                        <span class="tag">奥地利</span>
+                        <span class="tag highlight">顶级学府</span>
+                        <span class="tag source">维也纳音乐大学</span>
+                    </div>
+                    <div class="card-summary">
+                        <strong>院校：</strong>维也纳音乐与表演艺术大学是<span class="highlight-text">世界最古老、最著名的音乐学府之一</span>，培养了无数音乐大师。
+                    </div>
+                    <a href="https://www.mdw.ac.at" class="link-btn" target="_blank" rel="noopener noreferrer">查看详情 →</a>
+                </article>
+
+                <article class="news-card">
+                    <div class="card-header">
+                        <div class="rank-badge">2</div>
+                        <div style="flex: 1;">
+                            <div class="card-title">美国茱莉亚音乐学院：音乐教育的标杆</div>
+                            <div class="card-meta">
+                                <span>📰 茱莉亚学院</span>
+                                <span>📅 2024</span>
+                                <div class="heat-indicator">
+                                    <span>🔥</span>
+                                    <div class="heat-bar"><div class="heat-fill" style="width:90%"></div></div>
+                                    <span class="heat-value">90%</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tags">
+                        <span class="tag">国际院校</span>
+                        <span class="tag">美国</span>
+                        <span class="tag source">茱莉亚学院</span>
+                    </div>
+                    <div class="card-summary">
+                        <strong>院校：</strong>茱莉亚音乐学院位于纽约，是<span class="highlight-text">世界最顶尖的表演艺术学校之一</span>，以严格的选拔和卓越的教学闻名。
+                    </div>
+                    <a href="https://www.juilliard.edu" class="link-btn" target="_blank" rel="noopener noreferrer">查看详情 →</a>
+                </article>
+
+                <article class="news-card">
+                    <div class="card-header">
+                        <div class="rank-badge">3</div>
+                        <div style="flex: 1;">
+                            <div class="card-title">全球音乐教育协会：推动国际音乐教育交流</div>
+                            <div class="card-meta">
+                                <span>📰 GMEA</span>
+                                <span>📅 2024</span>
+                                <div class="heat-indicator">
+                                    <span>🔥</span>
+                                    <div class="heat-bar"><div class="heat-fill" style="width:85%"></div></div>
+                                    <span class="heat-value">85%</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tags">
+                        <span class="tag">国际组织</span>
+                        <span class="tag">教育交流</span>
+                        <span class="tag source">GMEA</span>
+                    </div>
+                    <div class="card-summary">
+                        <strong>组织：</strong>全球音乐教育协会（GMEA）致力于<span class="highlight-text">促进全球音乐教育交流与合作</span>，举办国际研讨会和学术交流活动。
+                    </div>
+                    <a href="http://www.gmeaa.com" class="link-btn" target="_blank" rel="noopener noreferrer">查看详情 →</a>
+                </article>
+            </div>
+        </section>
+
+        <!-- Section 4: 赛事动态 -->
+        <section class="section" id="section-competition">
+            <div class="section-header">
+                <div class="section-icon competition">🏆</div>
+                <div class="section-title">
+                    <h2>赛事动态</h2>
+                    <p>国内外音乐比赛、展演活动、获奖资讯</p>
+                </div>
+            </div>
+            <div class="news-grid">
+                <article class="news-card featured">
+                    <div class="card-header">
+                        <div class="rank-badge hot">1</div>
+                        <div style="flex: 1;">
+                            <div class="card-title">肖邦国际钢琴比赛：中国选手屡创佳绩</div>
+                            <div class="card-meta">
+                                <span>📰 肖邦协会</span>
+                                <span>📅 2021/2024</span>
+                                <div class="heat-indicator">
+                                    <span>🔥</span>
+                                    <div class="heat-bar"><div class="heat-fill" style="width:94%"></div></div>
+                                    <span class="heat-value">94%</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tags">
+                        <span class="tag">国际比赛</span>
+                        <span class="tag">钢琴</span>
+                        <span class="tag highlight">顶级赛事</span>
+                        <span class="tag source">肖邦协会</span>
+                    </div>
+                    <div class="card-summary">
+                        <strong>赛事：</strong>肖邦国际钢琴比赛是<span class="highlight-text">世界最高水平的钢琴比赛之一</span>，中国选手近年来屡创佳绩，展现中国钢琴教育的实力。
+                    </div>
+                    <a href="https://konkurs.chopin.pl" class="link-btn" target="_blank" rel="noopener noreferrer">查看详情 →</a>
+                </article>
+
+                <article class="news-card">
+                    <div class="card-header">
+                        <div class="rank-badge">2</div>
+                        <div style="flex: 1;">
+                            <div class="card-title">Sky Culture国际艺术空间：2025澳门钢琴邀请赛</div>
+                            <div class="card-meta">
+                                <span>📱 微信公众号</span>
+                                <span>📅 2025</span>
+                                <div class="heat-indicator">
+                                    <span>🔥</span>
+                                    <div class="heat-bar"><div class="heat-fill" style="width:88%"></div></div>
+                                    <span class="heat-value">88%</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tags">
+                        <span class="tag">国际比赛</span>
+                        <span class="tag">钢琴</span>
+                        <span class="tag weixin">Sky Culture</span>
+                    </div>
+                    <div class="card-summary">
+                        <strong>赛事：</strong>澳门钢琴邀请赛由Sky Culture国际艺术空间主办，<span class="highlight-text">面向全球青少年钢琴学习者</span>，提供国际舞台展示机会。
+                    </div>
+                    <a href="https://mp.weixin.qq.com/s/UrUwVmMwMN_5iSLjTvgpbw" class="link-btn weixin" target="_blank" rel="noopener noreferrer">查看微信文章 →</a>
+                </article>
+
+                <article class="news-card">
+                    <div class="card-header">
+                        <div class="rank-badge">3</div>
+                        <div style="flex: 1;">
+                            <div class="card-title">Sky Culture国际艺术空间：2025维也纳国际音乐比赛</div>
+                            <div class="card-meta">
+                                <span>📱 微信公众号</span>
+                                <span>📅 2025</span>
+                                <div class="heat-indicator">
+                                    <span>🔥</span>
+                                    <div class="heat-bar"><div class="heat-fill" style="width:86%"></div></div>
+                                    <span class="heat-value">86%</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tags">
+                        <span class="tag">国际比赛</span>
+                        <span class="tag">综合赛事</span>
+                        <span class="tag weixin">Sky Culture</span>
+                    </div>
+                    <div class="card-summary">
+                        <strong>赛事：</strong>维也纳国际音乐比赛在<span class="highlight-text">音乐之都维也纳</span>举办，涵盖钢琴、弦乐、声乐等多个专业，优胜者可获维也纳演出机会。
+                    </div>
+                    <a href="https://mp.weixin.qq.com/s/62z5STVDVZ0BRwiCxC6-ng" class="link-btn weixin" target="_blank" rel="noopener noreferrer">查看微信文章 →</a>
+                </article>
+            </div>
+
+            <div class="contact-banner">
+                <h3>📞 咨询·参与赛事请联系</h3>
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <span>Linson：</span> 13539321128（微信同号）
+                    </div>
+                    <div class="contact-item">
+                        <span>香港办事处：</span> 00852-84838445
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 5: 行业八卦 -->
         <section class="section" id="section-gossip">
             <div class="section-header">
                 <div class="section-icon gossip">🎭</div>
@@ -749,219 +1018,36 @@
                 </article>
             </div>
         </section>
-
-        <!-- Section 4: 赛事动态 -->
-        <section class="section" id="section-competition">
-            <div class="section-header">
-                <div class="section-icon competition">🏆</div>
-                <div class="section-title">
-                    <h2>赛事动态</h2>
-                    <p>国内外音乐比赛、展演活动、获奖资讯</p>
-                </div>
-            </div>
-            <div class="news-grid">
-                <article class="news-card">
-                    <div class="card-header">
-                        <div class="rank-badge">1</div>
-                        <div style="flex: 1;">
-                            <div class="card-title">肖邦国际钢琴比赛：中国选手屡创佳绩</div>
-                            <div class="card-meta">
-                                <span>📰 肖邦协会</span>
-                                <span>📅 2021/2024</span>
-                                <div class="heat-indicator">
-                                    <span>🔥</span>
-                                    <div class="heat-bar"><div class="heat-fill" style="width:94%"></div></div>
-                                    <span class="heat-value">94%</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="tags">
-                        <span class="tag">国际比赛</span>
-                        <span class="tag">钢琴</span>
-                        <span class="tag highlight">顶级赛事</span>
-                        <span class="tag source">肖邦协会</span>
-                    </div>
-                    <div class="card-summary">
-                        <strong>赛事：</strong>肖邦国际钢琴比赛是<span class="highlight-text">世界最高水平的钢琴比赛之一</span>，中国选手近年来屡创佳绩，展现中国钢琴教育的实力。
-                    </div>
-                    <a href="https://konkurs.chopin.pl" class="link-btn" target="_blank" rel="noopener noreferrer">查看详情 →</a>
-                </article>
-
-                <article class="news-card">
-                    <div class="card-header">
-                        <div class="rank-badge">2</div>
-                        <div style="flex: 1;">
-                            <div class="card-title">中国音乐金钟奖：国家级音乐大奖</div>
-                            <div class="card-meta">
-                                <span>📰 中国音协</span>
-                                <span>📅 2023</span>
-                                <div class="heat-indicator">
-                                    <span>🔥</span>
-                                    <div class="heat-bar"><div class="heat-fill" style="width:88%"></div></div>
-                                    <span class="heat-value">88%</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="tags">
-                        <span class="tag">国家级</span>
-                        <span class="tag">综合赛事</span>
-                        <span class="tag source">中国音协</span>
-                    </div>
-                    <div class="card-summary">
-                        <strong>赛事：</strong>中国音乐金钟奖是<span class="highlight-text">中国音乐界唯一的国家级综合性大奖</span>，涵盖声乐、器乐、作品等多个类别。
-                    </div>
-                    <a href="http://www.chnmusic.org" class="link-btn" target="_blank" rel="noopener noreferrer">查看详情 →</a>
-                </article>
-
-                <article class="news-card">
-                    <div class="card-header">
-                        <div class="rank-badge">3</div>
-                        <div style="flex: 1;">
-                            <div class="card-title">全国青少年钢琴比赛：发掘音乐新星</div>
-                            <div class="card-meta">
-                                <span>📰 中国音协</span>
-                                <span>📅 2024</span>
-                                <div class="heat-indicator">
-                                    <span>🔥</span>
-                                    <div class="heat-bar"><div class="heat-fill" style="width:80%"></div></div>
-                                    <span class="heat-value">80%</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="tags">
-                        <span class="tag">青少年</span>
-                        <span class="tag">钢琴</span>
-                        <span class="tag source">中国音协</span>
-                    </div>
-                    <div class="card-summary">
-                        <strong>赛事：</strong>全国青少年钢琴比赛是<span class="highlight-text">国内最具影响力的青少年钢琴赛事</span>，为年轻钢琴家提供展示舞台。
-                    </div>
-                    <a href="http://www.chnmusic.org" class="link-btn" target="_blank" rel="noopener noreferrer">查看详情 →</a>
-                </article>
-            </div>
-        </section>
-
-        <!-- Section 5: 国际视野 -->
-        <section class="section" id="section-international">
-            <div class="section-header">
-                <div class="section-icon international">🌍</div>
-                <div class="section-title">
-                    <h2>国际视野</h2>
-                    <p>国际音乐教育动态、海外院校资讯、全球音乐趋势</p>
-                </div>
-            </div>
-            <div class="news-grid">
-                <article class="news-card">
-                    <div class="card-header">
-                        <div class="rank-badge">1</div>
-                        <div style="flex: 1;">
-                            <div class="card-title">维也纳音乐与表演艺术大学：世界顶级音乐学府</div>
-                            <div class="card-meta">
-                                <span>📰 维也纳音乐大学</span>
-                                <span>📅 2024</span>
-                                <div class="heat-indicator">
-                                    <span>🔥</span>
-                                    <div class="heat-bar"><div class="heat-fill" style="width:92%"></div></div>
-                                    <span class="heat-value">92%</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="tags">
-                        <span class="tag">国际院校</span>
-                        <span class="tag">奥地利</span>
-                        <span class="tag highlight">顶级学府</span>
-                        <span class="tag source">维也纳音乐大学</span>
-                    </div>
-                    <div class="card-summary">
-                        <strong>院校：</strong>维也纳音乐与表演艺术大学是<span class="highlight-text">世界最古老、最著名的音乐学府之一</span>，培养了无数音乐大师。
-                    </div>
-                    <a href="https://www.mdw.ac.at" class="link-btn" target="_blank" rel="noopener noreferrer">查看详情 →</a>
-                </article>
-
-                <article class="news-card">
-                    <div class="card-header">
-                        <div class="rank-badge">2</div>
-                        <div style="flex: 1;">
-                            <div class="card-title">茱莉亚音乐学院：美国音乐教育的标杆</div>
-                            <div class="card-meta">
-                                <span>📰 茱莉亚学院</span>
-                                <span>📅 2024</span>
-                                <div class="heat-indicator">
-                                    <span>🔥</span>
-                                    <div class="heat-bar"><div class="heat-fill" style="width:90%"></div></div>
-                                    <span class="heat-value">90%</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="tags">
-                        <span class="tag">国际院校</span>
-                        <span class="tag">美国</span>
-                        <span class="tag source">茱莉亚学院</span>
-                    </div>
-                    <div class="card-summary">
-                        <strong>院校：</strong>茱莉亚音乐学院位于纽约，是<span class="highlight-text">世界最顶尖的表演艺术学校之一</span>，以严格的选拔和卓越的教学闻名。
-                    </div>
-                    <a href="https://www.juilliard.edu" class="link-btn" target="_blank" rel="noopener noreferrer">查看详情 →</a>
-                </article>
-
-                <article class="news-card">
-                    <div class="card-header">
-                        <div class="rank-badge">3</div>
-                        <div style="flex: 1;">
-                            <div class="card-title">全球音乐教育协会：推动国际音乐教育交流</div>
-                            <div class="card-meta">
-                                <span>📰 GMEA</span>
-                                <span>📅 2024</span>
-                                <div class="heat-indicator">
-                                    <span>🔥</span>
-                                    <div class="heat-bar"><div class="heat-fill" style="width:85%"></div></div>
-                                    <span class="heat-value">85%</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="tags">
-                        <span class="tag">国际组织</span>
-                        <span class="tag">教育交流</span>
-                        <span class="tag source">GMEA</span>
-                    </div>
-                    <div class="card-summary">
-                        <strong>组织：</strong>全球音乐教育协会（GMEA）致力于<span class="highlight-text">促进全球音乐教育交流与合作</span>，举办国际研讨会和学术交流活动。
-                    </div>
-                    <a href="http://www.gmeaa.com" class="link-btn" target="_blank" rel="noopener noreferrer">查看详情 →</a>
-                </article>
-            </div>
-        </section>
     </div>
 
     <footer>
         <div class="footer-content">
             <div class="footer-sources">
-                <span class="source-tag">📰 教育部</span>
-                <span class="source-tag">📰 中国政府网</span>
-                <span class="source-tag">📰 新华社</span>
-                <span class="source-tag">📰 中国音协</span>
-                <span class="source-tag">📰 国家大剧院</span>
-                <span class="source-tag">📰 IFPI</span>
-                <span class="source-tag">🏫 中央音乐学院</span>
-                <span class="source-tag">🏫 上海音乐学院</span>
-                <span class="source-tag">🏫 中国音乐学院</span>
-                <span class="source-tag">🏫 武汉音乐学院</span>
-                <span class="source-tag">🏫 星海音乐学院</span>
-                <span class="source-tag">🏫 西安音乐学院</span>
-                <span class="source-tag">🏫 沈阳音乐学院</span>
-                <span class="source-tag">🏫 天津音乐学院</span>
-                <span class="source-tag">🏫 四川音乐学院</span>
-                <span class="source-tag">🏫 浙江音乐学院</span>
-                <span class="source-tag">🏫 哈尔滨音乐学院</span>
-                <span class="source-tag">🏫 茱莉亚学院</span>
-                <span class="source-tag">🏫 维也纳音乐大学</span>
-                <span class="source-tag">🔍 腾讯元宝 ProSearch</span>
+                <span style="font-weight:600;color:var(--primary);margin-right:10px;">📊 数据来源：</span>
+                <a href="http://www.gmeaa.com" class="source-tag" target="_blank">国际音乐教育家协会·智库</a>
+                <a href="http://www.moe.gov.cn" class="source-tag" target="_blank">教育部</a>
+                <span style="color:var(--text-muted);">各大音乐学院官网：</span>
+                <a href="https://www.ccom.edu.cn" class="source-tag" target="_blank">中央音乐学院</a>
+                <a href="https://www.shcmusic.edu.cn" class="source-tag" target="_blank">上海音乐学院</a>
+                <a href="https://www.ccmusic.edu.cn" class="source-tag" target="_blank">中国音乐学院</a>
+                <a href="https://www.whcm.edu.cn" class="source-tag" target="_blank">武汉音乐学院</a>
+                <a href="https://www.xhcom.edu.cn" class="source-tag" target="_blank">星海音乐学院</a>
+                <a href="https://www.xacom.edu.cn" class="source-tag" target="_blank">西安音乐学院</a>
+                <a href="https://www.sycm.com.cn" class="source-tag" target="_blank">沈阳音乐学院</a>
+                <a href="https://www.tjcm.edu.cn" class="source-tag" target="_blank">天津音乐学院</a>
+                <a href="https://www.sccm.cn" class="source-tag" target="_blank">四川音乐学院</a>
+                <a href="https://www.zjcm.edu.cn" class="source-tag" target="_blank">浙江音乐学院</a>
+                <a href="https://www.hrbcm.edu.cn" class="source-tag" target="_blank">哈尔滨音乐学院</a>
+                <span style="color:var(--text-muted);">欧洲Top5：</span>
+                <a href="https://www.mdw.ac.at" class="source-tag" target="_blank">🇦🇹 维也纳音乐大学</a>
+                <a href="https://www.ram.ac.uk" class="source-tag" target="_blank">🇬🇧 伦敦皇家音乐学院</a>
+                <a href="https://www.conservatoiredeparis.fr" class="source-tag" target="_blank">🇫🇷 巴黎国立音乐学院</a>
+                <a href="https://www.hfm-berlin.de" class="source-tag" target="_blank">🇩🇪 柏林艺术大学</a>
+                <a href="https://www.consmilano.it" class="source-tag" target="_blank">🇮🇹 米兰威尔第音乐学院</a>
+                <span style="color:var(--text-muted);">美国Top3：</span>
+                <a href="https://www.juilliard.edu" class="source-tag" target="_blank">🇺🇸 美国茱莉亚音乐学院</a>
+                <a href="https://www.curtis.edu" class="source-tag" target="_blank">🇺🇸 柯蒂斯音乐学院</a>
+                <a href="https://music.yale.edu" class="source-tag" target="_blank">🇺🇸 耶鲁大学音乐学院</a>
             </div>
             <div class="footer-bottom">
                 <div class="footer-partner">
@@ -969,7 +1055,7 @@
                     <span>国际音乐教育家协会 IMEA</span>
                 </div>
                 <div class="footer-info">
-                    <p>📊 数据来源：教育部、中国音协、各大音乐学院官网、国际音乐组织</p>
+                    <p>📊 数据来源：国际音乐教育家协会·智库，教育部，各大音乐学院官网</p>
                     <div class="update-time">
                         <span>🔄</span>
                         <span>Linson 整理审核 | 更新时间：2026-04-24</span>
