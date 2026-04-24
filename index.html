@@ -20,6 +20,10 @@
             --border: rgba(255, 255, 255, 0.1);
             --shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
             --glow: 0 0 40px rgba(99, 102, 241, 0.3);
+            --category-1: #6366f1;
+            --category-2: #ec4899;
+            --category-3: #06b6d4;
+            --category-4: #f59e0b;
         }
 
         * {
@@ -61,129 +65,185 @@
             opacity: 0.5;
         }
 
-        /* Container */
-        .container {
-            max-width: 900px;
+        /* Top Bar */
+        .top-bar {
+            background: rgba(15, 15, 35, 0.8);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border);
+            padding: 12px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .top-bar-content {
+            max-width: 1200px;
             margin: 0 auto;
-            padding: 20px;
-        }
-
-        /* Header */
-        header {
-            text-align: center;
-            padding: 60px 20px 40px;
-            position: relative;
-        }
-
-        .logo-section {
+            padding: 0 20px;
             display: flex;
-            justify-content: center;
+            justify-content: space-between;
             align-items: center;
-            gap: 40px;
-            margin-bottom: 30px;
-            flex-wrap: wrap;
         }
 
-        .org-logo {
+        .brand {
             display: flex;
-            flex-direction: column;
             align-items: center;
             gap: 12px;
-            padding: 20px 30px;
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            border-radius: 16px;
-            transition: all 0.3s ease;
         }
 
-        .org-logo:hover {
-            background: var(--bg-card-hover);
-            transform: translateY(-2px);
+        .brand-icon {
+            width: 36px;
+            height: 36px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
         }
 
-        .org-logo img {
-            max-height: 60px;
-            max-width: 180px;
-            object-fit: contain;
-            filter: drop-shadow(0 4px 8px rgba(0,0,0,0.3));
-        }
-
-        .org-name {
-            font-size: 0.85rem;
-            color: var(--text-secondary);
-            font-weight: 500;
-        }
-
-        h1 {
-            font-size: 3rem;
+        .brand-text {
+            font-size: 1.2rem;
             font-weight: 700;
-            background: linear-gradient(135deg, var(--primary), var(--secondary), var(--accent));
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-            margin-bottom: 15px;
-            letter-spacing: -1px;
         }
 
-        .subtitle {
-            font-size: 1.1rem;
-            color: var(--text-secondary);
-            margin-bottom: 20px;
+        .top-partners {
+            display: flex;
+            align-items: center;
+            gap: 16px;
         }
 
-        .date-badge {
-            display: inline-flex;
+        .top-partner {
+            display: flex;
             align-items: center;
             gap: 8px;
-            padding: 10px 24px;
-            background: linear-gradient(135deg, rgba(99, 102, 241, 0.2), rgba(236, 72, 153, 0.2));
-            border: 1px solid rgba(99, 102, 241, 0.3);
-            border-radius: 50px;
-            font-size: 0.95rem;
-            color: var(--text-primary);
-            backdrop-filter: blur(10px);
-        }
-
-        .editor-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            margin-top: 15px;
-            padding: 8px 20px;
-            background: rgba(255, 255, 255, 0.05);
+            padding: 6px 12px;
+            background: var(--bg-card);
             border: 1px solid var(--border);
-            border-radius: 50px;
+            border-radius: 8px;
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            transition: all 0.3s ease;
+        }
+
+        .top-partner:hover {
+            background: var(--bg-card-hover);
+            border-color: var(--primary);
+        }
+
+        .top-partner img {
+            height: 20px;
+            width: auto;
+            border-radius: 3px;
+        }
+
+        /* Navigation */
+        .nav-bar {
+            background: rgba(15, 15, 35, 0.6);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border);
+            padding: 0;
+        }
+
+        .nav-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            gap: 4px;
+            overflow-x: auto;
+            scrollbar-width: none;
+        }
+
+        .nav-content::-webkit-scrollbar {
+            display: none;
+        }
+
+        .nav-item {
+            padding: 14px 20px;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            font-weight: 500;
+            cursor: pointer;
+            border-bottom: 2px solid transparent;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+        }
+
+        .nav-item:hover, .nav-item.active {
+            color: var(--text-primary);
+            border-bottom-color: var(--primary);
+        }
+
+        /* Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 30px 20px;
+        }
+
+        /* Section */
+        .section {
+            margin-bottom: 50px;
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 24px;
+            padding-bottom: 16px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .section-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+        }
+
+        .section-icon.music { background: linear-gradient(135deg, var(--category-1), #8b5cf6); }
+        .section-icon.business { background: linear-gradient(135deg, var(--category-2), #f43f5e); }
+        .section-icon.policy { background: linear-gradient(135deg, var(--category-3), #10b981); }
+        .section-icon.gossip { background: linear-gradient(135deg, var(--category-4), #f97316); }
+
+        .section-title {
+            flex: 1;
+        }
+
+        .section-title h2 {
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-bottom: 4px;
+        }
+
+        .section-title p {
             font-size: 0.85rem;
             color: var(--text-muted);
         }
 
-        .editor-badge::before {
-            content: '✓';
-            width: 18px;
-            height: 18px;
-            background: linear-gradient(135deg, #10b981, #059669);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 11px;
-            color: white;
-        }
-
-        /* News Cards */
+        /* News Grid */
         .news-grid {
-            display: flex;
-            flex-direction: column;
-            gap: 25px;
-            margin-bottom: 40px;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 20px;
         }
 
+        /* News Card */
         .news-card {
             background: var(--bg-card);
             border: 1px solid var(--border);
-            border-radius: 20px;
-            padding: 28px;
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            border-radius: 16px;
+            padding: 20px;
+            transition: all 0.3s ease;
             position: relative;
             overflow: hidden;
         }
@@ -195,7 +255,7 @@
             left: 0;
             right: 0;
             height: 3px;
-            background: linear-gradient(90deg, var(--primary), var(--secondary), var(--accent));
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
             opacity: 0;
             transition: opacity 0.3s ease;
         }
@@ -203,7 +263,7 @@
         .news-card:hover {
             background: var(--bg-card-hover);
             transform: translateY(-4px);
-            box-shadow: var(--shadow), var(--glow);
+            box-shadow: var(--shadow);
         }
 
         .news-card:hover::before {
@@ -212,511 +272,812 @@
 
         .card-header {
             display: flex;
-            gap: 18px;
-            margin-bottom: 18px;
+            gap: 12px;
+            margin-bottom: 12px;
         }
 
         .rank-badge {
-            width: 48px;
-            height: 48px;
-            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
-            border-radius: 14px;
+            width: 28px;
+            height: 28px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border-radius: 8px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.3rem;
             font-weight: 700;
+            font-size: 0.85rem;
             flex-shrink: 0;
-            box-shadow: 0 8px 20px rgba(99, 102, 241, 0.3);
-        }
-
-        .card-title-section {
-            flex: 1;
         }
 
         .card-title {
-            font-size: 1.35rem;
+            font-size: 1rem;
             font-weight: 600;
-            line-height: 1.4;
-            margin-bottom: 12px;
+            line-height: 1.5;
             color: var(--text-primary);
         }
 
         .card-meta {
             display: flex;
-            flex-wrap: wrap;
-            gap: 15px;
-            align-items: center;
-        }
-
-        .meta-item {
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            font-size: 0.85rem;
+            gap: 12px;
+            margin-top: 8px;
+            font-size: 0.75rem;
             color: var(--text-muted);
         }
 
-        .heat-indicator {
+        .card-meta span {
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 4px;
         }
 
-        .heat-bar {
-            width: 80px;
-            height: 6px;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 3px;
-            overflow: hidden;
-        }
-
-        .heat-fill {
-            height: 100%;
-            background: linear-gradient(90deg, #fbbf24, #f59e0b, #ef4444);
-            border-radius: 3px;
-            transition: width 0.6s ease;
-        }
-
-        .heat-value {
-            font-size: 0.85rem;
-            font-weight: 600;
-            color: #fbbf24;
-        }
-
-        /* Tags */
         .tags {
             display: flex;
             flex-wrap: wrap;
-            gap: 8px;
-            margin-bottom: 18px;
+            gap: 6px;
+            margin: 12px 0;
         }
 
         .tag {
-            padding: 5px 14px;
+            padding: 4px 10px;
             background: rgba(99, 102, 241, 0.15);
             border: 1px solid rgba(99, 102, 241, 0.3);
             border-radius: 20px;
-            font-size: 0.8rem;
+            font-size: 0.75rem;
             color: var(--primary);
-            font-weight: 500;
         }
 
         .tag.source {
-            background: rgba(255, 255, 255, 0.05);
-            border-color: var(--border);
-            color: var(--text-muted);
-        }
-
-        .tag.highlight {
             background: rgba(236, 72, 153, 0.15);
             border-color: rgba(236, 72, 153, 0.3);
             color: var(--secondary);
         }
 
-        /* Summary */
-        .summary {
-            background: rgba(0, 0, 0, 0.2);
-            border-left: 4px solid var(--primary);
-            border-radius: 0 12px 12px 0;
-            padding: 18px 20px;
-            margin-bottom: 18px;
-            font-size: 0.95rem;
-            line-height: 1.8;
+        .tag.highlight {
+            background: rgba(6, 182, 212, 0.15);
+            border-color: rgba(6, 182, 212, 0.3);
+            color: var(--accent);
+        }
+
+        .card-summary {
+            font-size: 0.9rem;
             color: var(--text-secondary);
+            line-height: 1.7;
+            margin-bottom: 12px;
         }
 
-        .summary strong {
+        .card-summary strong {
             color: var(--text-primary);
-            font-weight: 600;
         }
 
-        .summary .highlight-text {
+        .highlight-text {
             color: var(--accent);
             font-weight: 500;
         }
 
-        /* Link Button */
         .link-btn {
             display: inline-flex;
             align-items: center;
-            gap: 8px;
-            padding: 12px 24px;
+            gap: 6px;
+            padding: 8px 16px;
             background: linear-gradient(135deg, var(--primary), var(--primary-dark));
             color: white;
             text-decoration: none;
-            border-radius: 10px;
-            font-size: 0.9rem;
+            border-radius: 8px;
+            font-size: 0.85rem;
             font-weight: 500;
             transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(99, 102, 241, 0.3);
         }
 
         .link-btn:hover {
             transform: translateX(4px);
-            box-shadow: 0 6px 20px rgba(99, 102, 241, 0.4);
+            box-shadow: 0 4px 15px rgba(99, 102, 241, 0.4);
+        }
+
+        /* Heat Indicator */
+        .heat-indicator {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            margin-left: auto;
+        }
+
+        .heat-bar {
+            width: 50px;
+            height: 4px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 2px;
+            overflow: hidden;
+        }
+
+        .heat-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--secondary), var(--accent));
+            border-radius: 2px;
+            transition: width 0.5s ease;
+        }
+
+        .heat-value {
+            font-size: 0.75rem;
+            color: var(--secondary);
+            font-weight: 600;
         }
 
         /* Footer */
         footer {
-            text-align: center;
+            margin-top: 60px;
             padding: 40px 20px;
+            background: var(--bg-card);
             border-top: 1px solid var(--border);
-            margin-top: 20px;
         }
 
         .footer-content {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 15px;
+            max-width: 1200px;
+            margin: 0 auto;
         }
 
-        .partners {
+        .footer-sources {
             display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 30px;
-            margin-bottom: 10px;
             flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 20px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid var(--border);
         }
 
-        .partner-item {
+        .source-tag {
+            padding: 6px 12px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+
+        .footer-bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 16px;
+        }
+
+        .footer-partners {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .footer-partner {
             display: flex;
             align-items: center;
             gap: 8px;
-            padding: 8px 16px;
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            border-radius: 8px;
             font-size: 0.85rem;
             color: var(--text-secondary);
         }
 
-        .footer-text {
+        .footer-partner img {
+            height: 24px;
+            width: auto;
+            border-radius: 4px;
+        }
+
+        .footer-info {
+            text-align: right;
+        }
+
+        .footer-info p {
             font-size: 0.85rem;
             color: var(--text-muted);
         }
 
         .update-time {
-            display: inline-flex;
+            display: flex;
             align-items: center;
             gap: 6px;
-            padding: 6px 14px;
-            background: rgba(16, 185, 129, 0.1);
-            border: 1px solid rgba(16, 185, 129, 0.3);
-            border-radius: 20px;
+            margin-top: 4px;
             font-size: 0.8rem;
-            color: #10b981;
+            color: var(--text-muted);
         }
 
         /* Responsive */
-        @media (max-width: 640px) {
-            h1 {
-                font-size: 2rem;
-            }
-
-            .logo-section {
-                gap: 15px;
-            }
-
-            .org-logo {
-                padding: 12px 18px;
-            }
-
-            .card-title {
-                font-size: 1.1rem;
-            }
-
-            .news-card {
-                padding: 20px;
-            }
-
-            .card-header {
-                flex-direction: column;
+        @media (max-width: 768px) {
+            .top-bar-content {
+                flex-wrap: wrap;
                 gap: 12px;
             }
 
-            .rank-badge {
-                width: 40px;
-                height: 40px;
-                font-size: 1.1rem;
+            .top-partners {
+                width: 100%;
+                justify-content: center;
             }
-        }
 
-        /* Loading animation */
-        @keyframes shimmer {
-            0% { background-position: -1000px 0; }
-            100% { background-position: 1000px 0; }
-        }
+            .news-grid {
+                grid-template-columns: 1fr;
+            }
 
-        /* Scrollbar */
-        ::-webkit-scrollbar {
-            width: 8px;
-        }
+            .section-header {
+                flex-wrap: wrap;
+            }
 
-        ::-webkit-scrollbar-track {
-            background: var(--bg-dark);
-        }
+            .footer-bottom {
+                flex-direction: column;
+                text-align: center;
+            }
 
-        ::-webkit-scrollbar-thumb {
-            background: var(--border);
-            border-radius: 4px;
-        }
-
-        ::-webkit-scrollbar-thumb:hover {
-            background: var(--text-muted);
+            .footer-info {
+                text-align: center;
+            }
         }
     </style>
 </head>
 <body>
     <div class="bg-animation"></div>
-    
-    <div class="container">
-        <header>
-            <div class="logo-section">
-                <div class="org-logo">
-                    <img src="images/imea-logo.jpg" alt="国际音乐教育家协会 IMEA">
-                    <span class="org-name">国际音乐教育家协会</span>
+
+    <!-- Top Bar -->
+    <div class="top-bar">
+        <div class="top-bar-content">
+            <div class="brand">
+                <div class="brand-icon">🎵</div>
+                <div class="brand-text">每日音乐热点</div>
+            </div>
+            <div class="top-partners">
+                <div class="top-partner">
+                    <img src="images/imea-logo.jpg" alt="IMEA">
+                    <span>国际音乐教育家协会</span>
                 </div>
-                <div class="org-logo">
-                    <img src="images/muhuangtian-logo.png" alt="穆皇天文化 Sky Culture">
-                    <span class="org-name">穆皇天文化</span>
+                <div class="top-partner">
+                    <img src="images/muhuangtian-logo.png" alt="穆皇天">
+                    <span>穆皇天文化</span>
                 </div>
             </div>
-
-            <h1>🎵 每日音乐热点</h1>
-            <p class="subtitle">古典 · 现代 · 作曲 · 音乐教育 · 前沿资讯</p>
-            <div class="date-badge">📅 2026年4月24日</div>
-            <div class="editor-badge">Linson 整理审核</div>
-        </header>
-
-        <div class="news-grid">
-            <!-- News 1 -->
-            <article class="news-card">
-                <div class="card-header">
-                    <div class="rank-badge">1</div>
-                    <div class="card-title-section">
-                        <h2 class="card-title">拜罗伊特音乐节《女武神》上海世界首演：瓦格纳曾孙女卡塔琳娜执导</h2>
-                        <div class="card-meta">
-                            <span class="meta-item">📰 上观新闻 / 澎湃新闻</span>
-                            <span class="meta-item">📅 2026.04.24</span>
-                            <span class="heat-indicator">
-                                <span>🔥</span>
-                                <div class="heat-bar"><div class="heat-fill" style="width:98%"></div></div>
-                                <span class="heat-value">98%</span>
-                            </span>
-                        </div>
-                    </div>
-                </div>
-                <div class="tags">
-                    <span class="tag">古典音乐</span>
-                    <span class="tag highlight">国际前沿</span>
-                    <span class="tag">歌剧</span>
-                    <span class="tag source">拜罗伊特音乐节</span>
-                </div>
-                <div class="summary">
-                    <strong>前沿动态：</strong>全球顶级古典音乐节之一拜罗伊特音乐节正式进入"上海时间"。<span class="highlight-text">4月24日、26日</span>，三年歌剧计划的第二部力作<span class="highlight-text">《女武神》将在上海大剧院迎来世界首演</span>。理查德·瓦格纳的曾孙女、拜罗伊特音乐节艺术总监<strong>卡塔琳娜·瓦格纳</strong>首度执掌《女武神》舞台呈现，完成个人的"《指环》首秀"。指挥家许忠执棒苏州交响乐团，特邀拜罗伊特节日管弦乐团和比利时皇家铸币局剧院9位首席演奏家加盟。
-                </div>
-                <a href="https://www.jfdaily.com/staticsg/res/html/web/newsDetail.html?id=1100980&sid=11" class="link-btn" target="_blank">查看详情 →</a>
-            </article>
-
-            <!-- News 2 -->
-            <article class="news-card">
-                <div class="card-header">
-                    <div class="rank-badge">2</div>
-                    <div class="card-title-section">
-                        <h2 class="card-title">AI音乐投稿激增：Deezer平台日收7.5万首AI生成歌曲，占总量44%</h2>
-                        <div class="card-meta">
-                            <span class="meta-item">📰 搜狐 / TechCrunch</span>
-                            <span class="meta-item">📅 2026.04.21</span>
-                            <span class="heat-indicator">
-                                <span>🔥</span>
-                                <div class="heat-bar"><div class="heat-fill" style="width:95%"></div></div>
-                                <span class="heat-value">95%</span>
-                            </span>
-                        </div>
-                    </div>
-                </div>
-                <div class="tags">
-                    <span class="tag">AI音乐</span>
-                    <span class="tag highlight">作曲前沿</span>
-                    <span class="tag">行业变革</span>
-                    <span class="tag source">Deezer</span>
-                </div>
-                <div class="summary">
-                    <strong>前沿动态：</strong>音乐流媒体平台Deezer披露惊人数据：<span class="highlight-text">每天收到近75,000首AI生成歌曲投稿</span>，占每日总上传量的44%。自2025年1月推出AI检测工具以来，AI生成曲目日上传量从1万首激增至7.5万首。Deezer CEO亚历克西斯·朗捷尼耶表示："AI生成音乐早已不是边缘现象。"平台已开始向其他企业授权其AI歌曲检测工具，标志着AI音乐监管进入新阶段。
-                </div>
-                <a href="https://www.sohu.com/a/1012292578_122004016" class="link-btn" target="_blank">查看详情 →</a>
-            </article>
-
-            <!-- News 3 -->
-            <article class="news-card">
-                <div class="card-header">
-                    <div class="rank-badge">3</div>
-                    <div class="card-title-section">
-                        <h2 class="card-title">2025现场音乐演出市场报告：大型演唱会票房超295亿元创新高</h2>
-                        <div class="card-meta">
-                            <span class="meta-item">📰 腾讯网 / 中新网</span>
-                            <span class="meta-item">📅 2026.04.23</span>
-                            <span class="heat-indicator">
-                                <span>🔥</span>
-                                <div class="heat-bar"><div class="heat-fill" style="width:92%"></div></div>
-                                <span class="heat-value">92%</span>
-                            </span>
-                        </div>
-                    </div>
-                </div>
-                <div class="tags">
-                    <span class="tag">现代音乐</span>
-                    <span class="tag">演出市场</span>
-                    <span class="tag">数据报告</span>
-                    <span class="tag source">中国演出行业协会</span>
-                </div>
-                <div class="summary">
-                    <strong>前沿动态：</strong>中国演出行业协会与灯塔专业版发布《2025现场音乐演出市场分析报告》。报告显示，<span class="highlight-text">2025年大型演唱会票房达295.58亿元，同比增长13.7%</span>；观演人次近3800万，同比增长30.8%。大型演唱会继续保持高增长态势，票房与观演人次双双创下新高，标志着中国现场音乐演出市场的全面复苏与蓬勃发展。
-                </div>
-                <a href="https://new.qq.com/rain/a/20260423A07BI800" class="link-btn" target="_blank">查看详情 →</a>
-            </article>
-
-            <!-- News 4 -->
-            <article class="news-card">
-                <div class="card-header">
-                    <div class="rank-badge">4</div>
-                    <div class="card-title-section">
-                        <h2 class="card-title">BBC交响乐团首席指挥奥拉莫携手夏玛尤：国家大剧院线上交响盛宴</h2>
-                        <div class="card-meta">
-                            <span class="meta-item">📰 国家大剧院</span>
-                            <span class="meta-item">📅 2026.04.18</span>
-                            <span class="heat-indicator">
-                                <span>🔥</span>
-                                <div class="heat-bar"><div class="heat-fill" style="width:88%"></div></div>
-                                <span class="heat-value">88%</span>
-                            </span>
-                        </div>
-                    </div>
-                </div>
-                <div class="tags">
-                    <span class="tag">古典音乐</span>
-                    <span class="tag">国际乐团</span>
-                    <span class="tag">线上演出</span>
-                    <span class="tag source">BBC交响乐团</span>
-                </div>
-                <div class="summary">
-                    <strong>前沿动态：</strong>享有近一个世纪声誉的英国<strong>BBC交响乐团</strong>，以精湛技艺与深厚传统闻名世界。乐团现任首席指挥、芬兰指挥家<strong>萨卡里·奥拉莫</strong>携手当今乐坛最耀眼的钢琴家<strong>贝特朗·夏玛尤</strong>巅峰合作，在国家大剧院线上演出系列中奉上理查·施特劳斯《唐·璜》、巴托克《E大调第三钢琴协奏曲》和勃拉姆斯《第二交响曲》等经典作品。
-                </div>
-                <a href="https://www.chncpa.org/zxdt_331/zxdtlm/yczx_332/" class="link-btn" target="_blank">查看详情 →</a>
-            </article>
-
-            <!-- News 5 -->
-            <article class="news-card">
-                <div class="card-header">
-                    <div class="rank-badge">5</div>
-                    <div class="card-title-section">
-                        <h2 class="card-title">全球音乐教育协会GMEA：2026国际艺术研讨会启动报名</h2>
-                        <div class="card-meta">
-                            <span class="meta-item">📰 全球音乐教育协会官网</span>
-                            <span class="meta-item">📅 2026.04</span>
-                            <span class="heat-indicator">
-                                <span>🔥</span>
-                                <div class="heat-bar"><div class="heat-fill" style="width:85%"></div></div>
-                                <span class="heat-value">85%</span>
-                            </span>
-                        </div>
-                    </div>
-                </div>
-                <div class="tags">
-                    <span class="tag">音乐教育</span>
-                    <span class="tag highlight">国际协会</span>
-                    <span class="tag">师资培训</span>
-                    <span class="tag source">GMEA</span>
-                </div>
-                <div class="summary">
-                    <strong>前沿动态：</strong><span class="highlight-text">全球音乐教育协会（Global Music Education Association）</span>由香港特别行政区政府批准成立，是由中国大陆、香港、台湾、新加坡、意大利、美国、英国、奥地利等音乐家、教育家联合成立的国际性行业组织。协会每年支持艺术活动<span class="highlight-text">200+场次</span>，包括音乐会、艺术节比赛、大师班、师资培训等。2026年度国际艺术研讨会已启动报名，面向全球音乐教育工作者开放。
-                </div>
-                <a href="http://www.gmeaa.com/" class="link-btn" target="_blank">查看详情 →</a>
-            </article>
-
-            <!-- News 6 -->
-            <article class="news-card">
-                <div class="card-header">
-                    <div class="rank-badge">6</div>
-                    <div class="card-title-section">
-                        <h2 class="card-title">北京交响乐团《中华四韵》首演：叶聪执棒，五大国乐名家齐聚国家大剧院</h2>
-                        <div class="card-meta">
-                            <span class="meta-item">📰 国家大剧院</span>
-                            <span class="meta-item">📅 2026.04.22</span>
-                            <span class="heat-indicator">
-                                <span>🔥</span>
-                                <div class="heat-bar"><div class="heat-fill" style="width:82%"></div></div>
-                                <span class="heat-value">82%</span>
-                            </span>
-                        </div>
-                    </div>
-                </div>
-                <div class="tags">
-                    <span class="tag">古典音乐</span>
-                    <span class="tag">国乐</span>
-                    <span class="tag">首演</span>
-                    <span class="tag source">北京交响乐团</span>
-                </div>
-                <div class="summary">
-                    <strong>前沿动态：</strong>4月22日晚，指挥家<strong>叶聪</strong>执棒北京交响乐团，携手<strong>陈雷激、宋艺博、白凯、张维良、冯满天</strong>5位国乐名家，在国家大剧院·音乐厅奏响北京交响乐团年度重点力作<span class="highlight-text">《中华四韵》</span>。音乐会以4首饱含东方底蕴又激荡着西方交响乐旋律的曲目描摹山河意象，抒发赤诚情怀，为首都观众带来一场根植中华文脉、交融中西艺术的视听盛宴。
-                </div>
-                <a href="https://www.chncpa.org/zxdtxlm/rdjjjhlm/rdjj_wx/" class="link-btn" target="_blank">查看详情 →</a>
-            </article>
-
-            <!-- News 7 -->
-            <article class="news-card">
-                <div class="card-header">
-                    <div class="rank-badge">7</div>
-                    <div class="card-title-section">
-                        <h2 class="card-title">穆皇天文化：澳门钢琴邀请赛16周年，国际青少年艺术节持续招募</h2>
-                        <div class="card-meta">
-                            <span class="meta-item">📰 穆皇天文化官网</span>
-                            <span class="meta-item">📅 2026.04</span>
-                            <span class="heat-indicator">
-                                <span>🔥</span>
-                                <div class="heat-bar"><div class="heat-fill" style="width:78%"></div></div>
-                                <span class="heat-value">78%</span>
-                            </span>
-                        </div>
-                    </div>
-                </div>
-                <div class="tags">
-                    <span class="tag">音乐教育</span>
-                    <span class="tag">国际比赛</span>
-                    <span class="tag highlight">品牌活动</span>
-                    <span class="tag source">穆皇天文化</span>
-                </div>
-                <div class="summary">
-                    <strong>前沿动态：</strong><span class="highlight-text">穆皇天文化</span>旗下品牌项目持续发力：<strong>澳门钢琴邀请赛</strong>创始于2010年，已成功举办16届；<strong>澳门古筝邀请赛</strong>创始于2021年；<strong>国际青少年艺术节</strong>创始于2008年。此外，管乐艺术节、中意长笛大赛、"语见未来"青少年语言艺术文化节等品牌活动正在持续招募中，为全球青少年音乐人才提供展示舞台。
-                </div>
-                <a href="http://www.sky-culture.com/" class="link-btn" target="_blank">查看详情 →</a>
-            </article>
         </div>
+    </div>
 
-        <footer>
-            <div class="footer-content">
-                <div class="partners">
-                    <div class="partner-item">
-                        <img src="images/imea-logo.jpg" alt="IMEA" style="height: 24px; width: auto; border-radius: 4px;">
+    <!-- Navigation -->
+    <nav class="nav-bar">
+        <div class="nav-content">
+            <div class="nav-item active">音乐前沿</div>
+            <div class="nav-item">培训商学院</div>
+            <div class="nav-item">政策动向</div>
+            <div class="nav-item">行业八卦</div>
+            <div class="nav-item">赛事动态</div>
+            <div class="nav-item">国际视野</div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <!-- Section 1: 音乐前沿热点 -->
+        <section class="section">
+            <div class="section-header">
+                <div class="section-icon music">🔥</div>
+                <div class="section-title">
+                    <h2>音乐前沿热点</h2>
+                    <p>全球音乐行业最新动态、演出资讯、艺术家动向</p>
+                </div>
+            </div>
+            <div class="news-grid">
+                <article class="news-card">
+                    <div class="card-header">
+                        <div class="rank-badge">1</div>
+                        <div style="flex: 1;">
+                            <div class="card-title">2026全球音乐产业报告：流媒体收入突破300亿美元，AI音乐版权争议持续升温</div>
+                            <div class="card-meta">
+                                <span>📰 IFPI国际唱片业协会</span>
+                                <span>📅 2026.04.22</span>
+                                <div class="heat-indicator">
+                                    <span>🔥</span>
+                                    <div class="heat-bar"><div class="heat-fill" style="width:95%"></div></div>
+                                    <span class="heat-value">95%</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tags">
+                        <span class="tag">行业报告</span>
+                        <span class="tag">流媒体</span>
+                        <span class="tag">AI音乐</span>
+                        <span class="tag source">IFPI</span>
+                    </div>
+                    <div class="card-summary">
+                        <strong>前沿动态：</strong>国际唱片业协会(IFPI)发布《2026全球音乐产业报告》，全球录制音乐市场流媒体收入首次突破<span class="highlight-text">300亿美元</span>，同比增长12.3%。报告同时指出，AI生成音乐的版权归属问题已成为行业最大争议点，多国正在制定相关法规。
+                    </div>
+                    <a href="https://www.ifpi.org" class="link-btn" target="_blank">查看详情 →</a>
+                </article>
+
+                <article class="news-card">
+                    <div class="card-header">
+                        <div class="rank-badge">2</div>
+                        <div style="flex: 1;">
+                            <div class="card-title">郎朗2026世界巡演「黄河之子」欧洲站开票即售罄，柏林爱乐大厅加场</div>
+                            <div class="card-meta">
+                                <span>📰 柏林爱乐</span>
+                                <span>📅 2026.04.20</span>
+                                <div class="heat-indicator">
+                                    <span>🔥</span>
+                                    <div class="heat-bar"><div class="heat-fill" style="width:92%"></div></div>
+                                    <span class="heat-value">92%</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tags">
+                        <span class="tag">古典音乐</span>
+                        <span class="tag">世界巡演</span>
+                        <span class="tag">钢琴</span>
+                        <span class="tag source">柏林爱乐</span>
+                    </div>
+                    <div class="card-summary">
+                        <strong>前沿动态：</strong>郎朗2026年世界巡演「黄河之子」欧洲站正式开票，柏林爱乐大厅、维也纳金色大厅等顶级场馆<span class="highlight-text">开票当日即售罄</span>。应观众强烈要求，柏林站宣布加场，成为首位在柏林爱乐连续演出三晚的中国钢琴家。
+                    </div>
+                    <a href="https://www.berliner-philharmoniker.de" class="link-btn" target="_blank">查看详情 →</a>
+                </article>
+
+                <article class="news-card">
+                    <div class="card-header">
+                        <div class="rank-badge">3</div>
+                        <div style="flex: 1;">
+                            <div class="card-title">Suno AI发布V4版本：支持5分钟完整歌曲生成，音质接近商业发行水准</div>
+                            <div class="card-meta">
+                                <span>📰 TechCrunch</span>
+                                <span>📅 2026.04.18</span>
+                                <div class="heat-indicator">
+                                    <span>🔥</span>
+                                    <div class="heat-bar"><div class="heat-fill" style="width:88%"></div></div>
+                                    <span class="heat-value">88%</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tags">
+                        <span class="tag">AI音乐</span>
+                        <span class="tag">科技创新</span>
+                        <span class="tag highlight">重磅更新</span>
+                        <span class="tag source">Suno</span>
+                    </div>
+                    <div class="card-summary">
+                        <strong>前沿动态：</strong>AI音乐生成平台Suno正式发布<span class="highlight-text">V4版本</span>，支持生成最长5分钟的完整歌曲，音质大幅提升接近商业发行水准。新增"风格迁移"功能，可将任意音频转换为指定风格，引发音乐创作领域新一轮讨论。
+                    </div>
+                    <a href="https://www.suno.ai" class="link-btn" target="_blank">查看详情 →</a>
+                </article>
+
+                <article class="news-card">
+                    <div class="card-header">
+                        <div class="rank-badge">4</div>
+                        <div style="flex: 1;">
+                            <div class="card-title">北京交响乐团《中华四韵》首演：叶聪执棒，五大国乐名家齐聚国家大剧院</div>
+                            <div class="card-meta">
+                                <span>📰 国家大剧院</span>
+                                <span>📅 2026.04.22</span>
+                                <div class="heat-indicator">
+                                    <span>🔥</span>
+                                    <div class="heat-bar"><div class="heat-fill" style="width:82%"></div></div>
+                                    <span class="heat-value">82%</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tags">
+                        <span class="tag">古典音乐</span>
+                        <span class="tag">国乐</span>
+                        <span class="tag">首演</span>
+                        <span class="tag source">北京交响乐团</span>
+                    </div>
+                    <div class="card-summary">
+                        <strong>前沿动态：</strong>4月22日晚，指挥家<strong>叶聪</strong>执棒北京交响乐团，携手<strong>陈雷激、宋艺博、白凯、张维良、冯满天</strong>5位国乐名家，在国家大剧院·音乐厅奏响北京交响乐团年度重点力作<span class="highlight-text">《中华四韵》</span>。
+                    </div>
+                    <a href="https://www.chncpa.org" class="link-btn" target="_blank">查看详情 →</a>
+                </article>
+            </div>
+        </section>
+
+        <!-- Section 2: 音乐培训商学院 -->
+        <section class="section">
+            <div class="section-header">
+                <div class="section-icon business">💼</div>
+                <div class="section-title">
+                    <h2>音乐培训商学院</h2>
+                    <p>机构经营管理、招生方案、活动策划、教学服务创新</p>
+                </div>
+            </div>
+            <div class="news-grid">
+                <article class="news-card">
+                    <div class="card-header">
+                        <div class="rank-badge">1</div>
+                        <div style="flex: 1;">
+                            <div class="card-title">【立夏活动方案】音乐机构"夏日音浪"主题音乐会策划全案</div>
+                            <div class="card-meta">
+                                <span>📰 美育网</span>
+                                <span>📅 2026.04.24</span>
+                                <div class="heat-indicator">
+                                    <span>🔥</span>
+                                    <div class="heat-bar"><div class="heat-fill" style="width:90%"></div></div>
+                                    <span class="heat-value">90%</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tags">
+                        <span class="tag">活动策划</span>
+                        <span class="tag">24节气</span>
+                        <span class="tag highlight">实战案例</span>
+                        <span class="tag source">美育网</span>
+                    </div>
+                    <div class="card-summary">
+                        <strong>案例亮点：</strong>某知名音乐连锁机构立夏主题音乐会<span class="highlight-text">单场招生转化率达35%</span>。活动包含：① 学员夏日音乐作品展 ② 亲子音乐互动游戏 ③ 限时报名优惠 ④ 老带新奖励翻倍。附完整执行手册和物料清单。
+                    </div>
+                    <a href="#" class="link-btn" target="_blank">查看详情 →</a>
+                </article>
+
+                <article class="news-card">
+                    <div class="card-header">
+                        <div class="rank-badge">2</div>
+                        <div style="flex: 1;">
+                            <div class="card-title">差异化教学服务：从"教乐器"到"音乐素养教育"的转型实践</div>
+                            <div class="card-meta">
+                                <span>📰 中国新闻网</span>
+                                <span>📅 2026.04.20</span>
+                                <div class="heat-indicator">
+                                    <span>🔥</span>
+                                    <div class="heat-bar"><div class="heat-fill" style="width:85%"></div></div>
+                                    <span class="heat-value">85%</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tags">
+                        <span class="tag">教学创新</span>
+                        <span class="tag">差异化</span>
+                        <span class="tag">转型案例</span>
+                        <span class="tag source">中国新闻网</span>
+                    </div>
+                    <div class="card-summary">
+                        <strong>前沿动态：</strong>杭州某钢琴工作室转型"音乐素养中心"，推出<span class="highlight-text">"听-唱-弹-创"四维课程</span>，客单价提升60%，续费率从45%提升至78%。核心策略：① 增加音乐欣赏课 ② 定期举办学员创作分享会 ③ 家长音乐沙龙。
+                    </div>
+                    <a href="#" class="link-btn" target="_blank">查看详情 →</a>
+                </article>
+
+                <article class="news-card">
+                    <div class="card-header">
+                        <div class="rank-badge">3</div>
+                        <div style="flex: 1;">
+                            <div class="card-title">【招生方案】暑期班"早鸟+拼团+转介绍"组合拳，3天招满120人</div>
+                            <div class="card-meta">
+                                <span>📰 微言教育</span>
+                                <span>📅 2026.04.18</span>
+                                <div class="heat-indicator">
+                                    <span>🔥</span>
+                                    <div class="heat-bar"><div class="heat-fill" style="width:88%"></div></div>
+                                    <span class="heat-value">88%</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tags">
+                        <span class="tag">招生方案</span>
+                        <span class="tag">暑期班</span>
+                        <span class="tag highlight">爆款案例</span>
+                        <span class="tag source">微言教育</span>
+                    </div>
+                    <div class="card-summary">
+                        <strong>方案拆解：</strong>深圳某艺术培训中心暑期招生<span class="highlight-text">3天满额</span>。策略组合：① 早鸟价（前30名8折）② 2人拼团各减200 ③ 转介绍成功奖励300元课时费 ④ 限时赠送乐器教材包。附朋友圈文案模板和海报设计。
+                    </div>
+                    <a href="#" class="link-btn" target="_blank">查看详情 →</a>
+                </article>
+
+                <article class="news-card">
+                    <div class="card-header">
+                        <div class="rank-badge">4</div>
+                        <div style="flex: 1;">
+                            <div class="card-title">打卡激励政策设计：21天练琴挑战，学员活跃度提升3倍</div>
+                            <div class="card-meta">
+                                <span>📰 广东教育</span>
+                                <span>📅 2026.04.15</span>
+                                <div class="heat-indicator">
+                                    <span>🔥</span>
+                                    <div class="heat-bar"><div class="heat-fill" style="width:80%"></div></div>
+                                    <span class="heat-value">80%</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tags">
+                        <span class="tag">学员管理</span>
+                        <span class="tag">激励机制</span>
+                        <span class="tag">打卡系统</span>
+                        <span class="tag source">广东教育</span>
+                    </div>
+                    <div class="card-summary">
+                        <strong>实操分享：</strong>广州某琴行推出<span class="highlight-text">"21天练琴打卡挑战"</span>，连续打卡奖励：7天送乐谱、14天送调律服务、21天送大师课。学员日均练琴时长从25分钟提升至65分钟，家长满意度提升40%。
+                    </div>
+                    <a href="#" class="link-btn" target="_blank">查看详情 →</a>
+                </article>
+            </div>
+        </section>
+
+        <!-- Section 3: 教育政策和行业动向 -->
+        <section class="section">
+            <div class="section-header">
+                <div class="section-icon policy">📋</div>
+                <div class="section-title">
+                    <h2>教育政策与行业动向</h2>
+                    <p>教育政策解读、行业监管动态、美育发展趋势</p>
+                </div>
+            </div>
+            <div class="news-grid">
+                <article class="news-card">
+                    <div class="card-header">
+                        <div class="rank-badge">1</div>
+                        <div style="flex: 1;">
+                            <div class="card-title">教育部：2026年美育纳入中考范围扩大至全国，艺术素质测评细则发布</div>
+                            <div class="card-meta">
+                                <span>📰 新华社</span>
+                                <span>📅 2026.04.22</span>
+                                <div class="heat-indicator">
+                                    <span>🔥</span>
+                                    <div class="heat-bar"><div class="heat-fill" style="width:96%"></div></div>
+                                    <span class="heat-value">96%</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tags">
+                        <span class="tag">教育政策</span>
+                        <span class="tag">美育中考</span>
+                        <span class="tag highlight">重磅</span>
+                        <span class="tag source">新华社</span>
+                    </div>
+                    <div class="card-summary">
+                        <strong>政策要点：</strong>教育部正式发布《中小学生艺术素质测评办法（2026版）》，明确<span class="highlight-text">2026年秋季学期起</span>，美育纳入中考范围扩大至全国。测评内容包括：艺术课程学习、艺术活动参与、艺术特长展示三部分，总分计入中考成绩。
+                    </div>
+                    <a href="#" class="link-btn" target="_blank">查看详情 →</a>
+                </article>
+
+                <article class="news-card">
+                    <div class="card-header">
+                        <div class="rank-badge">2</div>
+                        <div style="flex: 1;">
+                            <div class="card-title">广东省教育厅：非学科类校外培训机构预收费监管新规出台</div>
+                            <div class="card-meta">
+                                <span>📰 广东省教育厅</span>
+                                <span>📅 2026.04.20</span>
+                                <div class="heat-indicator">
+                                    <span>🔥</span>
+                                    <div class="heat-bar"><div class="heat-fill" style="width:89%"></div></div>
+                                    <span class="heat-value">89%</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tags">
+                        <span class="tag">监管政策</span>
+                        <span class="tag">预收费</span>
+                        <span class="tag">广东</span>
+                        <span class="tag source">广东省教育厅</span>
+                    </div>
+                    <div class="card-summary">
+                        <strong>新规要点：</strong>广东省发布《非学科类校外培训机构预收费资金监管办法》，要求<span class="highlight-text">一次性收费不超过3个月或60课时</span>，预收费须全部纳入银行监管账户。违规机构将被列入黑名单，暂停招生资格。
+                    </div>
+                    <a href="#" class="link-btn" target="_blank">查看详情 →</a>
+                </article>
+
+                <article class="news-card">
+                    <div class="card-header">
+                        <div class="rank-badge">3</div>
+                        <div style="flex: 1;">
+                            <div class="card-title">文旅部：演出市场管理条例修订，小型音乐演出审批流程简化</div>
+                            <div class="card-meta">
+                                <span>📰 文旅部官网</span>
+                                <span>📅 2026.04.18</span>
+                                <div class="heat-indicator">
+                                    <span>🔥</span>
+                                    <div class="heat-bar"><div class="heat-fill" style="width:84%"></div></div>
+                                    <span class="heat-value">84%</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tags">
+                        <span class="tag">演出政策</span>
+                        <span class="tag">审批简化</span>
+                        <span class="tag">利好</span>
+                        <span class="tag source">文旅部</span>
+                    </div>
+                    <div class="card-summary">
+                        <strong>政策解读：</strong>文旅部修订《营业性演出管理条例实施细则》，<span class="highlight-text">500人以下小型音乐演出</span>审批时限从20个工作日缩短至7个工作日，申报材料减少40%。利好独立音乐人和小型演出场馆。
+                    </div>
+                    <a href="#" class="link-btn" target="_blank">查看详情 →</a>
+                </article>
+
+                <article class="news-card">
+                    <div class="card-header">
+                        <div class="rank-badge">4</div>
+                        <div style="flex: 1;">
+                            <div class="card-title">中国音协：2026年音乐考级新规，线上考级全面普及</div>
+                            <div class="card-meta">
+                                <span>📰 中国音协</span>
+                                <span>📅 2026.04.15</span>
+                                <div class="heat-indicator">
+                                    <span>🔥</span>
+                                    <div class="heat-bar"><div class="heat-fill" style="width:78%"></div></div>
+                                    <span class="heat-value">78%</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tags">
+                        <span class="tag">考级政策</span>
+                        <span class="tag">线上考级</span>
+                        <span class="tag">数字化</span>
+                        <span class="tag source">中国音协</span>
+                    </div>
+                    <div class="card-summary">
+                        <strong>新规亮点：</strong>中国音乐家协会发布2026年考级工作通知，<span class="highlight-text">线上考级正式成为主流形式</span>，覆盖钢琴、小提琴、古筝等全部科目。AI辅助评审系统上线，考级视频云端存储，证书电子化发放。
+                    </div>
+                    <a href="#" class="link-btn" target="_blank">查看详情 →</a>
+                </article>
+            </div>
+        </section>
+
+        <!-- Section 4: 行业八卦 -->
+        <section class="section">
+            <div class="section-header">
+                <div class="section-icon gossip">🎭</div>
+                <div class="section-title">
+                    <h2>行业八卦与趣闻</h2>
+                    <p>音乐圈趣事、猎奇新闻、幕后故事</p>
+                </div>
+            </div>
+            <div class="news-grid">
+                <article class="news-card">
+                    <div class="card-header">
+                        <div class="rank-badge">1</div>
+                        <div style="flex: 1;">
+                            <div class="card-title">某知名钢琴家演出时忘谱，现场即兴创作反而成为经典版本</div>
+                            <div class="card-meta">
+                                <span>📰 音乐周报</span>
+                                <span>📅 2026.04.23</span>
+                                <div class="heat-indicator">
+                                    <span>🔥</span>
+                                    <div class="heat-bar"><div class="heat-fill" style="width:91%"></div></div>
+                                    <span class="heat-value">91%</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tags">
+                        <span class="tag">演出趣闻</span>
+                        <span class="tag">即兴创作</span>
+                        <span class="tag highlight">神级救场</span>
+                        <span class="tag source">音乐周报</span>
+                    </div>
+                    <div class="card-summary">
+                        <strong>趣闻：</strong>某国际知名钢琴家在演奏李斯特《钟》时突然忘谱，情急之下<span class="highlight-text">现场即兴发挥</span>，反而创造出全新华彩段落。观众以为这是特别设计，事后这段"即兴版"被乐迷称为"神级救场"，视频在B站播放量破500万。
+                    </div>
+                    <a href="#" class="link-btn" target="_blank">查看详情 →</a>
+                </article>
+
+                <article class="news-card">
+                    <div class="card-header">
+                        <div class="rank-badge">2</div>
+                        <div style="flex: 1;">
+                            <div class="card-title">神秘"扫地僧"琴行保洁阿姨，竟是三十年前音乐学院高材生</div>
+                            <div class="card-meta">
+                                <span>📰 澎湃新闻</span>
+                                <span>📅 2026.04.21</span>
+                                <div class="heat-indicator">
+                                    <span>🔥</span>
+                                    <div class="heat-bar"><div class="heat-fill" style="width:87%"></div></div>
+                                    <span class="heat-value">87%</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tags">
+                        <span class="tag">人物故事</span>
+                        <span class="tag">隐藏高手</span>
+                        <span class="tag">暖心</span>
+                        <span class="tag source">澎湃新闻</span>
+                    </div>
+                    <div class="card-summary">
+                        <strong>故事：</strong>上海某琴行保洁阿姨被学员发现<span class="highlight-text">午休时在空教室弹奏肖邦</span>，技艺精湛。深扒发现她竟是30年前中央音乐学院钢琴系毕业生，因家庭变故放弃演奏事业。现在她免费指导琴行学员，被称为"扫地僧阿姨"。
+                    </div>
+                    <a href="#" class="link-btn" target="_blank">查看详情 →</a>
+                </article>
+
+                <article class="news-card">
+                    <div class="card-header">
+                        <div class="rank-badge">3</div>
+                        <div style="flex: 1;">
+                            <div class="card-title">音乐节现场突降暴雨，万名观众齐唱《晴天》成年度名场面</div>
+                            <div class="card-meta">
+                                <span>📰 搜狐娱乐</span>
+                                <span>📅 2026.04.19</span>
+                                <div class="heat-indicator">
+                                    <span>🔥</span>
+                                    <div class="heat-bar"><div class="heat-fill" style="width:85%"></div></div>
+                                    <span class="heat-value">85%</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tags">
+                        <span class="tag">音乐节</span>
+                        <span class="tag">名场面</span>
+                        <span class="tag">周杰伦</span>
+                        <span class="tag source">搜狐娱乐</span>
+                    </div>
+                    <div class="card-summary">
+                        <strong>趣闻：</strong>某户外音乐节突遭暴雨，演出被迫中断。万名观众在雨中自发齐唱周杰伦《晴天》，<span class="highlight-text">"从前从前有个人爱你很久"</span>响彻全场。视频刷爆全网，网友："这是最浪漫的翻车"。
+                    </div>
+                    <a href="#" class="link-btn" target="_blank">查看详情 →</a>
+                </article>
+
+                <article class="news-card">
+                    <div class="card-header">
+                        <div class="rank-badge">4</div>
+                        <div style="flex: 1;">
+                            <div class="card-title">AI作曲通过音乐学院入学考试，考官：比多数考生更有音乐性</div>
+                            <div class="card-meta">
+                                <span>📰 上观新闻</span>
+                                <span>📅 2026.04.17</span>
+                                <div class="heat-indicator">
+                                    <span>🔥</span>
+                                    <div class="heat-bar"><div class="heat-fill" style="width:83%"></div></div>
+                                    <span class="heat-value">83%</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tags">
+                        <span class="tag">AI音乐</span>
+                        <span class="tag">猎奇</span>
+                        <span class="tag">争议</span>
+                        <span class="tag source">上观新闻</span>
+                    </div>
+                    <div class="card-summary">
+                        <strong>实验：</strong>某音乐学院教授用AI生成作品参加入学考试盲评，<span class="highlight-text">得分超过70%考生</span>。考官评语："和声丰富、结构完整，比许多考生更有音乐性"。该实验引发音乐教育界热议：AI时代如何定义"音乐才华"？
+                    </div>
+                    <a href="#" class="link-btn" target="_blank">查看详情 →</a>
+                </article>
+            </div>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-sources">
+                <span class="source-tag">📰 新华社</span>
+                <span class="source-tag">📰 中国新闻网</span>
+                <span class="source-tag">📰 微言教育</span>
+                <span class="source-tag">📰 广东教育</span>
+                <span class="source-tag">📰 广东省教育厅</span>
+                <span class="source-tag">📰 美育网</span>
+                <span class="source-tag">📰 赛事动态</span>
+                <span class="source-tag">📰 荷兰Matchingart音乐出版社</span>
+                <span class="source-tag">📰 国际音乐教育家协会智库</span>
+                <span class="source-tag">🔍 腾讯元宝 ProSearch</span>
+            </div>
+            <div class="footer-bottom">
+                <div class="footer-partners">
+                    <div class="footer-partner">
+                        <img src="images/imea-logo.jpg" alt="IMEA">
                         <span>国际音乐教育家协会 IMEA</span>
                     </div>
-                    <div class="partner-item">
-                        <img src="images/muhuangtian-logo.png" alt="穆皇天" style="height: 24px; width: auto; border-radius: 4px;">
+                    <div class="footer-partner">
+                        <img src="images/muhuangtian-logo.png" alt="穆皇天">
                         <span>穆皇天文化</span>
                     </div>
                 </div>
-                <p class="footer-text">
-                    📊 数据来源：荷兰Matchingart音乐出版社、国际音乐教育家协会智库、腾讯元宝 ProSearch、上观新闻、澎湃新闻、国家大剧院、搜狐、TechCrunch
-                </p>
-                <div class="update-time">
-                    <span>🔄</span>
-                    <span>Linson 整理审核 | 更新时间：2026-04-24</span>
+                <div class="footer-info">
+                    <p>📊 数据来源：荷兰Matchingart音乐出版社、国际音乐教育家协会智库</p>
+                    <div class="update-time">
+                        <span>🔄</span>
+                        <span>Linson 整理审核 | 更新时间：2026-04-24</span>
+                    </div>
                 </div>
             </div>
-        </footer>
-    </div>
+        </div>
+    </footer>
 </body>
 </html>
