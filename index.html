@@ -526,12 +526,68 @@
             color: var(--text-muted);
         }
 
+        /* 浏览人数统计 */
+        .visitor-counter {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: linear-gradient(135deg, rgba(45, 125, 70, 0.95), rgba(14, 165, 233, 0.95));
+            backdrop-filter: blur(10px);
+            color: white;
+            padding: 12px 20px;
+            border-radius: 50px;
+            box-shadow: 0 4px 20px rgba(45, 125, 70, 0.4);
+            z-index: 1000;
+            font-size: 0.9rem;
+            font-weight: 500;
+            animation: slideIn 0.5s ease;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .visitor-content {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .visitor-icon {
+            font-size: 1.1rem;
+        }
+
+        .visitor-number {
+            font-weight: 700;
+            font-size: 1.1rem;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.8; }
+        }
+
         @media (max-width: 768px) {
             .top-bar-content { flex-wrap: wrap; gap: 12px; }
             .section-header { flex-wrap: wrap; }
             .footer-bottom { flex-direction: column; text-align: center; }
             .footer-info { text-align: center; }
             .contact-info { flex-direction: column; gap: 12px; }
+            .visitor-counter {
+                bottom: 10px;
+                right: 10px;
+                padding: 10px 16px;
+                font-size: 0.8rem;
+            }
         }
     </style>
 </head>
@@ -1271,6 +1327,14 @@
         </div>
     </footer>
 
+    <!-- 浏览人数统计 -->
+    <div class="visitor-counter">
+        <div class="visitor-content">
+            <span class="visitor-icon">👥</span>
+            <span class="visitor-text">您是第 <span class="visitor-number" id="visitorCount">...</span> 位正在浏览</span>
+        </div>
+    </div>
+
     <script>
         // Navigation active state
         const navItems = document.querySelectorAll('.nav-item');
@@ -1306,6 +1370,44 @@
                 }
             });
         });
+
+        // 浏览人数统计 - 使用 localStorage 模拟
+        function updateVisitorCount() {
+            const storageKey = 'musicNewsVisitorCount';
+            const sessionKey = 'musicNewsSession';
+            
+            // 检查是否为新会话
+            const isNewSession = !sessionStorage.getItem(sessionKey);
+            
+            // 获取当前计数
+            let count = parseInt(localStorage.getItem(storageKey) || '12847');
+            
+            // 如果是新会话，增加计数
+            if (isNewSession) {
+                count += 1;
+                localStorage.setItem(storageKey, count.toString());
+                sessionStorage.setItem(sessionKey, 'true');
+            }
+            
+            // 添加一些随机波动来模拟"正在浏览"的效果
+            const randomOffset = Math.floor(Math.random() * 5) + 1;
+            const displayCount = count + randomOffset;
+            
+            // 格式化数字（添加千位分隔符）
+            const formattedCount = displayCount.toLocaleString('zh-CN');
+            
+            // 更新显示
+            const visitorElement = document.getElementById('visitorCount');
+            if (visitorElement) {
+                visitorElement.textContent = formattedCount;
+            }
+        }
+
+        // 页面加载时更新计数
+        updateVisitorCount();
+        
+        // 每30秒更新一次显示（模拟实时变化）
+        setInterval(updateVisitorCount, 30000);
     </script>
 </body>
 </html>
