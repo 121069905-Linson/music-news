@@ -427,6 +427,26 @@
             color: var(--primary);
         }
 
+        .empty-state {
+            background: var(--bg-card);
+            border: 2px dashed var(--border);
+            border-radius: 20px;
+            padding: 60px 40px;
+            text-align: center;
+            color: var(--text-secondary);
+        }
+
+        .empty-state-icon {
+            font-size: 48px;
+            margin-bottom: 16px;
+        }
+
+        .empty-state h3 {
+            font-size: 1.2rem;
+            color: var(--text-primary);
+            margin-bottom: 8px;
+        }
+
         footer {
             margin-top: 80px;
             padding: 50px 20px;
@@ -644,88 +664,10 @@
                     <p>教育政策解读、行业监管动态、美育发展趋势</p>
                 </div>
             </div>
-            <div class="news-grid">
-                <article class="news-card">
-                    <div class="card-header">
-                        <div class="rank-badge">1</div>
-                        <div style="flex: 1;">
-                            <div class="card-title">教育部：全面实施学校美育浸润行动</div>
-                            <div class="card-meta">
-                                <span>📰 教育部</span>
-                                <span>📅 2023.12</span>
-                                <div class="heat-indicator">
-                                    <span>🔥</span>
-                                    <div class="heat-bar"><div class="heat-fill" style="width:96%"></div></div>
-                                    <span class="heat-value">96%</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="tags">
-                        <span class="tag">教育政策</span>
-                        <span class="tag">美育</span>
-                        <span class="tag highlight">重磅</span>
-                        <span class="tag source">教育部</span>
-                    </div>
-                    <div class="card-summary">
-                        <strong>政策要点：</strong>教育部印发《关于全面实施学校美育浸润行动的通知》，<span class="highlight-text">将美育纳入人才培养全过程</span>，提升学生审美素养。
-                    </div>
-                    <a href="http://www.moe.gov.cn" class="link-btn" target="_blank" rel="noopener noreferrer">查看详情 →</a>
-                </article>
-
-                <article class="news-card">
-                    <div class="card-header">
-                        <div class="rank-badge">2</div>
-                        <div style="flex: 1;">
-                            <div class="card-title">校外培训行政处罚暂行办法正式实施</div>
-                            <div class="card-meta">
-                                <span>📰 中国政府网</span>
-                                <span>📅 2023.10</span>
-                                <div class="heat-indicator">
-                                    <span>🔥</span>
-                                    <div class="heat-bar"><div class="heat-fill" style="width:92%"></div></div>
-                                    <span class="heat-value">92%</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="tags">
-                        <span class="tag">监管政策</span>
-                        <span class="tag">校外培训</span>
-                        <span class="tag source">中国政府网</span>
-                    </div>
-                    <div class="card-summary">
-                        <strong>新规要点：</strong>《校外培训行政处罚暂行办法》正式施行，明确<span class="highlight-text">无证办学、违规收费</span>等行为的处罚标准。
-                    </div>
-                    <a href="http://www.gov.cn" class="link-btn" target="_blank" rel="noopener noreferrer">查看详情 →</a>
-                </article>
-
-                <article class="news-card">
-                    <div class="card-header">
-                        <div class="rank-badge">3</div>
-                        <div style="flex: 1;">
-                            <div class="card-title">中国音协：全国音乐考级线上报名系统升级</div>
-                            <div class="card-meta">
-                                <span>📰 中国音协</span>
-                                <span>📅 2024</span>
-                                <div class="heat-indicator">
-                                    <span>🔥</span>
-                                    <div class="heat-bar"><div class="heat-fill" style="width:78%"></div></div>
-                                    <span class="heat-value">78%</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="tags">
-                        <span class="tag">考级政策</span>
-                        <span class="tag">数字化</span>
-                        <span class="tag source">中国音协</span>
-                    </div>
-                    <div class="card-summary">
-                        <strong>服务升级：</strong>中国音乐家协会升级全国音乐考级线上报名系统，<span class="highlight-text">支持线上缴费、成绩查询、证书下载</span>等功能。
-                    </div>
-                    <a href="http://www.chnmusic.org" class="link-btn" target="_blank" rel="noopener noreferrer">查看详情 →</a>
-                </article>
+            <div class="empty-state">
+                <div class="empty-state-icon">📭</div>
+                <h3>暂无最新政策</h3>
+                <p>最近10天内暂无重大教育政策发布<br>请持续关注，有新政策将第一时间更新</p>
             </div>
         </section>
 
@@ -1030,10 +972,8 @@
     <footer>
         <div class="footer-content">
             <div class="footer-sources">
-                <span style="font-weight:600;color:var(--primary);margin-right:10px;">📊 数据来源：</span>
                 <a href="http://www.gmeaa.com" class="source-tag" target="_blank">国际音乐教育家协会·智库</a>
                 <a href="http://www.moe.gov.cn" class="source-tag" target="_blank">教育部</a>
-                <span style="color:var(--text-muted);">各大音乐学院官网：</span>
                 <a href="https://www.ccom.edu.cn" class="source-tag" target="_blank">中央音乐学院</a>
                 <a href="https://www.shcmusic.edu.cn" class="source-tag" target="_blank">上海音乐学院</a>
                 <a href="https://www.ccmusic.edu.cn" class="source-tag" target="_blank">中国音乐学院</a>
@@ -1045,13 +985,11 @@
                 <a href="https://www.sccm.cn" class="source-tag" target="_blank">四川音乐学院</a>
                 <a href="https://www.zjcm.edu.cn" class="source-tag" target="_blank">浙江音乐学院</a>
                 <a href="https://www.hrbcm.edu.cn" class="source-tag" target="_blank">哈尔滨音乐学院</a>
-                <span style="color:var(--text-muted);">欧洲Top5：</span>
                 <a href="https://www.mdw.ac.at" class="source-tag" target="_blank">🇦🇹 维也纳音乐大学</a>
                 <a href="https://www.ram.ac.uk" class="source-tag" target="_blank">🇬🇧 伦敦皇家音乐学院</a>
                 <a href="https://www.conservatoiredeparis.fr" class="source-tag" target="_blank">🇫🇷 巴黎国立音乐学院</a>
                 <a href="https://www.hfm-berlin.de" class="source-tag" target="_blank">🇩🇪 柏林艺术大学</a>
                 <a href="https://www.consmilano.it" class="source-tag" target="_blank">🇮🇹 米兰威尔第音乐学院</a>
-                <span style="color:var(--text-muted);">美国Top3：</span>
                 <a href="https://www.juilliard.edu" class="source-tag" target="_blank">🇺🇸 美国茱莉亚音乐学院</a>
                 <a href="https://www.curtis.edu" class="source-tag" target="_blank">🇺🇸 柯蒂斯音乐学院</a>
                 <a href="https://music.yale.edu" class="source-tag" target="_blank">🇺🇸 耶鲁大学音乐学院</a>
@@ -1062,7 +1000,7 @@
                     <span>国际音乐教育家协会 IMEA</span>
                 </div>
                 <div class="footer-info">
-                    <p>📊 数据来源：国际音乐教育家协会·智库，教育部，各大音乐学院官网</p>
+                    <p>国际音乐教育家协会·智库，教育部，各大音乐学院官网</p>
                     <div class="update-time">
                         <span>🔄</span>
                         <span>Linson 整理审核 | 更新时间：2026-04-24</span>
