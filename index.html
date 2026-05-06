@@ -3,271 +3,86 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>音乐热点资讯 - 2026年5月2日</title>
+    <title>每日音乐热点资讯</title>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
-            background: linear-gradient(135deg, #0a0a0f 0%, #1a1a2e 50%, #16213e 100%);
-            color: #e0e0e0;
-            min-height: 100vh;
-            padding: 40px 20px;
-        }
-        .container { max-width: 900px; margin: 0 auto; }
-        .header {
-            text-align: center;
-            margin-bottom: 50px;
-            padding: 40px 0;
-        }
-        .header h1 {
-            font-size: 2.8em;
-            font-weight: 700;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            margin-bottom: 15px;
-        }
-        .header .date {
-            color: #888;
-            font-size: 1.1em;
-            letter-spacing: 2px;
-        }
-        .stats-bar {
-            display: flex;
-            justify-content: center;
-            gap: 40px;
-            margin: 30px 0;
-            padding: 20px;
-            background: rgba(255,255,255,0.03);
-            border-radius: 16px;
-            border: 1px solid rgba(255,255,255,0.05);
-        }
-        .stat-item {
-            text-align: center;
-        }
-        .stat-value {
-            font-size: 2em;
-            font-weight: 700;
-            color: #667eea;
-        }
-        .stat-label {
-            color: #666;
-            font-size: 0.85em;
-            margin-top: 5px;
-        }
-        .news-grid {
-            display: grid;
-            gap: 25px;
-        }
-        .news-card {
-            background: linear-gradient(145deg, rgba(30,30,50,0.8), rgba(20,20,35,0.9));
-            border-radius: 20px;
-            padding: 30px;
-            border: 1px solid rgba(102,126,234,0.2);
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-        }
-        .news-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 4px;
-            height: 100%;
-            background: linear-gradient(180deg, #667eea, #764ba2, #f093fb);
-        }
-        .news-card:hover {
-            transform: translateY(-5px);
-            border-color: rgba(102,126,234,0.5);
-            box-shadow: 0 20px 60px rgba(102,126,234,0.15);
-        }
-        .news-rank {
-            position: absolute;
-            top: 20px;
-            right: 25px;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.2em;
-            font-weight: 700;
-        }
-        .rank-1 { background: linear-gradient(135deg, #ffd700, #ff8c00); color: #000; }
-        .rank-2 { background: linear-gradient(135deg, #c0c0c0, #a0a0a0); color: #000; }
-        .rank-3 { background: linear-gradient(135deg, #cd7f32, #b8860b); color: #fff; }
-        .news-category {
-            display: inline-block;
-            padding: 5px 15px;
-            border-radius: 20px;
-            font-size: 0.8em;
-            font-weight: 600;
-            margin-bottom: 15px;
-        }
-        .cat-education { background: rgba(102,126,234,0.2); color: #667eea; }
-        .cat-classical { background: rgba(118,75,162,0.2); color: #764ba2; }
-        .cat-modern { background: rgba(240,147,251,0.2); color: #f093fb; }
-        .news-title {
-            font-size: 1.4em;
-            font-weight: 700;
-            color: #fff;
-            margin-bottom: 12px;
-            line-height: 1.5;
-        }
-        .news-summary {
-            color: #aaa;
-            line-height: 1.8;
-            margin-bottom: 20px;
-        }
-        .news-meta {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding-top: 15px;
-            border-top: 1px solid rgba(255,255,255,0.05);
-        }
-        .meta-left {
-            display: flex;
-            gap: 20px;
-            color: #666;
-            font-size: 0.85em;
-        }
-        .meta-item {
-            display: flex;
-            align-items: center;
-            gap: 6px;
-        }
-        .hot-bar {
-            width: 100px;
-            height: 6px;
-            background: rgba(255,255,255,0.1);
-            border-radius: 3px;
-            overflow: hidden;
-        }
-        .hot-fill {
-            height: 100%;
-            background: linear-gradient(90deg, #667eea, #764ba2);
-            border-radius: 3px;
-        }
-        .news-link {
-            color: #667eea;
-            text-decoration: none;
-            font-weight: 600;
-            transition: color 0.3s;
-        }
-        .news-link:hover { color: #f093fb; }
-        .footer {
-            text-align: center;
-            margin-top: 60px;
-            padding: 30px;
-            color: #555;
-            font-size: 0.9em;
-        }
-        .history-link {
-            display: inline-block;
-            margin-top: 20px;
-            padding: 12px 30px;
-            background: rgba(102,126,234,0.1);
-            border: 1px solid rgba(102,126,234,0.3);
-            border-radius: 25px;
-            color: #667eea;
-            text-decoration: none;
-            transition: all 0.3s;
-        }
-        .history-link:hover {
-            background: rgba(102,126,234,0.2);
-            transform: translateY(-2px);
-        }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%); min-height: 100vh; color: #e8e8e8; line-height: 1.6; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 20px; }
+        header { text-align: center; padding: 40px 0; border-bottom: 1px solid rgba(255,255,255,0.1); margin-bottom: 40px; }
+        h1 { font-size: 2.5rem; font-weight: 700; background: linear-gradient(90deg, #00d9ff, #00ff88); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 10px; }
+        .subtitle { font-size: 1.1rem; color: #888; margin-bottom: 20px; }
+        .categories { display: flex; gap: 15px; justify-content: center; flex-wrap: wrap; margin-bottom: 30px; }
+        .category-tag { background: rgba(255,255,255,0.1); padding: 8px 20px; border-radius: 20px; font-size: 0.9rem; color: #00d9ff; border: 1px solid rgba(0,217,255,0.3); }
+        .section-title { font-size: 1.5rem; font-weight: 600; color: #00ff88; margin-bottom: 20px; padding-bottom: 10px; border-bottom: 2px solid rgba(0,255,136,0.3); }
+        .news-grid { display: grid; gap: 25px; }
+        .news-card { background: rgba(255,255,255,0.05); border-radius: 16px; padding: 25px; border: 1px solid rgba(255,255,255,0.1); transition: all 0.3s ease; }
+        .news-card:hover { transform: translateY(-5px); border-color: rgba(0,217,255,0.3); box-shadow: 0 20px 40px rgba(0,0,0,0.3); }
+        .news-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 15px; }
+        .news-title { font-size: 1.4rem; font-weight: 600; color: #fff; flex: 1; margin-right: 15px; }
+        .news-title a { color: inherit; text-decoration: none; }
+        .news-title a:hover { color: #00d9ff; }
+        .heat-badge { background: linear-gradient(135deg, #ff6b6b, #ee5a24); padding: 6px 14px; border-radius: 20px; font-size: 0.85rem; font-weight: 600; white-space: nowrap; }
+        .news-meta { display: flex; gap: 20px; margin-bottom: 15px; font-size: 0.9rem; color: #888; }
+        .source { color: #00d9ff; }
+        .category { background: rgba(0,255,136,0.2); color: #00ff88; padding: 3px 10px; border-radius: 10px; font-size: 0.8rem; }
+        .news-summary { color: #ccc; font-size: 1rem; line-height: 1.8; }
+        .news-link { display: inline-block; margin-top: 15px; color: #00d9ff; text-decoration: none; font-size: 0.9rem; }
+        .news-link:hover { text-decoration: underline; }
+        .rank-number { display: inline-flex; align-items: center; justify-content: center; width: 32px; height: 32px; background: linear-gradient(135deg, #00d9ff, #00ff88); color: #1a1a2e; font-weight: 700; border-radius: 8px; margin-right: 12px; font-size: 1rem; }
+        footer { text-align: center; padding: 40px 0; margin-top: 60px; border-top: 1px solid rgba(255,255,255,0.1); color: #666; font-size: 0.9rem; }
+        @media (max-width: 768px) { h1 { font-size: 1.8rem; } .news-header { flex-direction: column; } .heat-badge { margin-top: 10px; } .news-meta { flex-direction: column; gap: 8px; } }
     </style>
 </head>
 <body>
     <div class="container">
-        <div class="header">
-            <h1>🎵 音乐热点资讯</h1>
-            <p class="date">2026年5月2日 · 星期六</p>
-        </div>
-        
-        <div class="stats-bar">
-            <div class="stat-item">
-                <div class="stat-value">3</div>
-                <div class="stat-label">精选资讯</div>
+        <header>
+            <h1>🎵 每日音乐热点资讯</h1>
+            <p class="subtitle">聚合古典音乐 · 现代音乐 · 作曲 · 音乐教育热点</p>
+            <div class="categories">
+                <span class="category-tag">古典音乐</span>
+                <span class="category-tag">现代音乐</span>
+                <span class="category-tag">作曲</span>
+                <span class="category-tag">音乐教育</span>
             </div>
-            <div class="stat-item">
-                <div class="stat-value">4</div>
-                <div class="stat-label">涵盖分类</div>
-            </div>
-            <div class="stat-item">
-                <div class="stat-value">实时</div>
-                <div class="stat-label">更新频率</div>
-            </div>
-        </div>
-
-        <div class="news-grid">
-            <!-- 资讯1 -->
-            <div class="news-card">
-                <div class="news-rank rank-1">1</div>
-                <span class="news-category cat-education">📚 音乐教育</span>
-                <h2 class="news-title">2026广州国际乐器展活动日程发布，音乐教育行业迎来深刻变革</h2>
-                <p class="news-summary">2026广州国际乐器展将依托广交会展馆D区的现代化展览空间，以系列同期活动回应时代命题。音乐教育行业在美育政策推动与科技赋能下，正经历从功利化考级到多元化、个性化、终身化的深刻变革。大湾区作为中国音乐产业的核心增长极，数字音乐、现场演出、音乐科技等板块正成为驱动行业增长的新引擎。</p>
-                <div class="news-meta">
-                    <div class="meta-left">
-                        <span class="meta-item">📍 国家轻工业乐器信息中心</span>
-                        <span class="meta-item">🕐 1天前</span>
-                    </div>
-                    <div style="display:flex;align-items:center;gap:10px;">
-                        <span style="color:#888;font-size:0.8em;">热度</span>
-                        <div class="hot-bar"><div class="hot-fill" style="width:98%"></div></div>
-                        <a href="http://mp.weixin.qq.com/s?src=11&timestamp=1777687324&ver=6695&signature=9IFI3IQ-YkxnARQag6nO3kqI4e1i1TJaqX6YKXl8DO5Pmdu4eC0KmzXok*Uot2qIPIeIcos80YT8dws1raN9M5uWL38gA7roCmI2rJVCp6gTQQj8zWpWKfXLOMKWj0Ur&new=1" class="news-link">查看原文 →</a>
-                    </div>
+        </header>
+        <main>
+            <section>
+                <h2 class="section-title">📌 最新资讯 · 2026年5月6日</h2>
+                <div class="news-grid">
+                    <article class="news-card">
+                        <div class="news-header">
+                            <h3 class="news-title"><span class="rank-number">1</span><a href="https://news.qq.com/rain/a/20260208A05TKD00" target="_blank">2026中国在线声乐教育口碑榜发布：椰子教育、伯克利在线领跑</a></h3>
+                            <span class="heat-badge">🔥 热度 TOP 1</span>
+                        </div>
+                        <div class="news-meta"><span class="source">📰 腾讯新闻</span><span class="category">音乐教育</span><span>📅 2026-02-08</span></div>
+                        <p class="news-summary">第三方教育测评机构联合多家媒体发布《2026中国在线声乐教育口碑榜》，以"课程完成率、师资硬核度、学员好评率、就业内推率"四大维度为硬指标进行综合评估。椰子教育凭借双认证成为唯一"科研级"声乐机构，累计培养17万名学员，VIP课程好评率98%。</p>
+                        <a href="https://news.qq.com/rain/a/20260208A05TKD00" target="_blank" class="news-link">查看原文 →</a>
+                    </article>
+                    <article class="news-card">
+                        <div class="news-header">
+                            <h3 class="news-title"><span class="rank-number">2</span><a href="https://mp.weixin.qq.com/s" target="_blank">2025年度古典音乐圈十大热点事件回顾</a></h3>
+                            <span class="heat-badge">🔥 热度 TOP 2</span>
+                        </div>
+                        <div class="news-meta"><span class="source">📰 微信公众号</span><span class="category">古典音乐</span><span>📅 2025-12</span></div>
+                        <p class="news-summary">2025年古典音乐圈十大热点事件包括：拉赫玛尼诺夫博物馆被莫斯科当局驱逐关闭、俄罗斯芭蕾舞者假扮乌克兰人在瑞典搞巡演、天才钢琴家在"范赛"连晋级资格都没有引发国际钢琴比赛争议、席夫在巴黎爱乐厅演出被迫中断等，引发业界对评奖机制、艺术家权益保护等问题的深入讨论。</p>
+                        <a href="https://mp.weixin.qq.com/s" target="_blank" class="news-link">查看原文 →</a>
+                    </article>
+                    <article class="news-card">
+                        <div class="news-header">
+                            <h3 class="news-title"><span class="rank-number">3</span><a href="https://www.163.com/dy" target="_blank">北京现代音乐节闭幕：现代音乐创作无限可能性展望</a></h3>
+                            <span class="heat-badge">🔥 热度 TOP 3</span>
+                        </div>
+                        <div class="news-meta"><span class="source">📰 网易新闻</span><span class="category">现代音乐</span><span>📅 2023-06-12</span></div>
+                        <p class="news-summary">北京现代音乐节闭幕音乐会在北京音乐厅落幕，吴怀世充满感染力的指挥风格与作品完美呈现，展现了现代音乐创作的无限可能性。杭州现代音乐节作为国内四大现代音乐节之一，由浙江音乐学院与杭州市西湖区人民政府联合举办，推动中国现代音乐创作的发展与国际交流。</p>
+                        <a href="https://www.163.com/dy" target="_blank" class="news-link">查看原文 →</a>
+                    </article>
                 </div>
-            </div>
-
-            <!-- 资讯2 -->
-            <div class="news-card">
-                <div class="news-rank rank-2">2</div>
-                <span class="news-category cat-classical">🎼 古典音乐</span>
-                <h2 class="news-title">中国学子斩获2026波士顿国际作曲比赛银奖，作品融合古典与现代美学</h2>
-                <p class="news-summary">中国音乐学院2022届学子易润荣获2026波士顿国际作曲比赛D2（职业组）大型合奏与管弦乐组别第二名（银奖）。获奖作品交响诗《The Poem Left Unfinished》（《未竟之诗》）以凝练的篇幅与贯通发展的结构，在新古典语汇中融入了当代环境音乐的美学沉思，作品既呈现了对生命价值的深刻思考，也发出了对未知命运克制而有力的叩问。</p>
-                <div class="news-meta">
-                    <div class="meta-left">
-                        <span class="meta-item">📍 腾讯网</span>
-                        <span class="meta-item">🕐 1天前</span>
-                    </div>
-                    <div style="display:flex;align-items:center;gap:10px;">
-                        <span style="color:#888;font-size:0.8em;">热度</span>
-                        <div class="hot-bar"><div class="hot-fill" style="width:95%"></div></div>
-                        <a href="http://mp.weixin.qq.com/s?src=11&timestamp=1777687330&ver=6695&signature=JTgCkSdnz3*wvWBD8G4TLoyaRqxwpfTpK9WCGO0bx6x-uxfE*voxcMqeixc5eg*C9niHkduSlKlROxPP5PvNZn3mKkCNNqD*gAccNReYxj2UG6dljcyPsPF7spmtp-5T&new=1" class="news-link">查看原文 →</a>
-                    </div>
-                </div>
-            </div>
-
-            <!-- 资讯3 -->
-            <div class="news-card">
-                <div class="news-rank rank-3">3</div>
-                <span class="news-category cat-modern">🎹 现代音乐</span>
-                <h2 class="news-title">MIDI协会颁发2026年度终身成就奖，表彰现代音乐制作领域先驱者</h2>
-                <p class="news-summary">MIDI协会在NAMM展会上颁发2026年度终身成就奖，表彰那些在定义MIDI、计算机音乐和现代音乐制作领域做出卓越贡献的先驱者。几十年来，获奖者在数字音乐技术发展历程中扮演了关键角色，推动了音乐制作方式的革命性变革，为现代音乐产业的繁荣奠定了技术基础。</p>
-                <div class="news-meta">
-                    <div class="meta-left">
-                        <span class="meta-item">📍 Midifan</span>
-                        <span class="meta-item">🕐 2026-04-11</span>
-                    </div>
-                    <div style="display:flex;align-items:center;gap:10px;">
-                        <span style="color:#888;font-size:0.8em;">热度</span>
-                        <div class="hot-bar"><div class="hot-fill" style="width:89%"></div></div>
-                        <a href="https://www.midifan.com/module-newsv2-view-3185.htm" class="news-link">查看原文 →</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="footer">
-            <p>📅 每日自动更新 | 数据来源：搜狗、Bing、腾讯网、Midifan等</p>
-            <a href="2026-05-02.html" class="history-link">查看今日详情页</a>
-        </div>
+            </section>
+        </main>
+        <footer>
+            <p>数据来源：腾讯新闻、微信公众号、网易新闻、搜狐网</p>
+            <p>© 2026 每日音乐热点资讯 · 自动更新于 GitHub Pages</p>
+        </footer>
     </div>
 </body>
 </html>
