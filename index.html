@@ -1,306 +1,313 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>音乐热点资讯 2026-05-14</title>
-<style>
-  :root {
-    --bg: #0d0d0f;
-    --card: #16181d;
-    --border: #1f2329;
-    --text: #e8eaed;
-    --text-muted: #8b949e;
-    --accent: #e53935;
-    --accent2: #7c4dff;
-    --tag-bg: #1c2333;
-    --tag: #60a5fa;
-    --green: #00c853;
-  }
-  * { box-sizing: border-box; margin: 0; padding: 0; }
-  body {
-    background: var(--bg);
-    color: var(--text);
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
-    max-width: 860px;
-    margin: 0 auto;
-    padding: 24px 16px 60px;
-    line-height: 1.6;
-  }
-  .header {
-    text-align: center;
-    padding: 36px 0 28px;
-    border-bottom: 1px solid var(--border);
-    margin-bottom: 32px;
-  }
-  .header .logo { font-size: 22px; font-weight: 700; letter-spacing: -0.5px; }
-  .header .logo span { color: var(--accent); }
-  .header .date { font-size: 13px; color: var(--text-muted); margin-top: 6px; }
-  .hot-badge {
-    display: inline-block;
-    background: var(--accent);
-    color: #fff;
-    font-size: 11px;
-    font-weight: 700;
-    border-radius: 3px;
-    padding: 2px 7px;
-    margin-right: 8px;
-    vertical-align: middle;
-  }
-  .new-badge {
-    display: inline-block;
-    background: var(--green);
-    color: #fff;
-    font-size: 10px;
-    font-weight: 700;
-    border-radius: 3px;
-    padding: 2px 6px;
-    margin-right: 8px;
-    vertical-align: middle;
-  }
-  .category { margin-bottom: 28px; }
-  .category-title {
-    font-size: 12px;
-    font-weight: 600;
-    color: var(--text-muted);
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    margin-bottom: 12px;
-    padding-left: 6px;
-    border-left: 3px solid var(--accent);
-  }
-  .card {
-    background: var(--card);
-    border: 1px solid var(--border);
-    border-radius: 10px;
-    padding: 20px 22px;
-    margin-bottom: 14px;
-    transition: border-color 0.2s;
-    cursor: default;
-  }
-  .card:hover { border-color: #2d3440; }
-  .card-title { font-size: 16px; font-weight: 600; color: var(--text); line-height: 1.5; margin-bottom: 8px; }
-  .card-meta { font-size: 12px; color: var(--text-muted); margin-bottom: 10px; }
-  .card-meta .source { color: var(--tag); }
-  .card-summary { font-size: 14px; color: #b0b8c4; line-height: 1.7; }
-  .card-footer {
-    margin-top: 12px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    gap: 8px;
-  }
-  .tag {
-    display: inline-block;
-    background: var(--tag-bg);
-    color: var(--tag);
-    font-size: 11px;
-    padding: 3px 10px;
-    border-radius: 20px;
-  }
-  .views { font-size: 12px; color: var(--text-muted); }
-  .views .num { color: var(--accent); font-weight: 600; }
-  .footer {
-    text-align: center;
-    margin-top: 48px;
-    font-size: 12px;
-    color: var(--text-muted);
-    border-top: 1px solid var(--border);
-    padding-top: 20px;
-  }
-  .footer a { color: var(--tag); text-decoration: none; }
-  .rank {
-    display: inline-block;
-    width: 22px;
-    height: 22px;
-    background: var(--accent);
-    color: #fff;
-    font-size: 12px;
-    font-weight: 700;
-    border-radius: 50%;
-    text-align: center;
-    line-height: 22px;
-    margin-right: 10px;
-    vertical-align: middle;
-  }
-  .rank-2 { background: #ff8f00; }
-  .rank-3 { background: #00897b; }
-  .update-note {
-    background: #1a2a1a;
-    border: 1px solid #2d4a2d;
-    border-radius: 8px;
-    padding: 12px 16px;
-    margin-bottom: 24px;
-    font-size: 13px;
-    color: #81c784;
-  }
-  .update-note strong { color: #a5d6a7; }
-  .highlight-row {
-    display: flex;
-    gap: 12px;
-    margin-bottom: 24px;
-    flex-wrap: wrap;
-  }
-  .highlight-card {
-    flex: 1;
-    min-width: 240px;
-    background: linear-gradient(135deg, #1a1f2e, #16181d);
-    border: 1px solid var(--border);
-    border-radius: 10px;
-    padding: 16px 18px;
-  }
-  .highlight-card .hl-label {
-    font-size: 10px;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 1.5px;
-    color: var(--accent);
-    margin-bottom: 6px;
-  }
-  .highlight-card .hl-value {
-    font-size: 20px;
-    font-weight: 700;
-    color: var(--text);
-  }
-  .highlight-card .hl-desc {
-    font-size: 12px;
-    color: var(--text-muted);
-    margin-top: 4px;
-  }
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>音乐热点资讯 - 每日热榜</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            background: linear-gradient(135deg, #0f0f23 0%, #1a1a2e 50%, #16213e 100%);
+            color: #e0e0e0;
+            min-height: 100vh;
+            padding: 40px 20px;
+        }
+        .container { max-width: 1200px; margin: 0 auto; }
+        .header {
+            text-align: center;
+            margin-bottom: 50px;
+            padding: 30px;
+            background: rgba(255,255,255,0.03);
+            border-radius: 20px;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+        .header h1 {
+            font-size: 2.5em;
+            background: linear-gradient(90deg, #ff6b6b, #c44569, #6c5ce7);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 10px;
+        }
+        .header .subtitle { color: #888; font-size: 1.1em; }
+        .latest-section {
+            background: rgba(255,255,255,0.03);
+            border-radius: 20px;
+            padding: 30px;
+            margin-bottom: 40px;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+        .latest-title {
+            font-size: 1.8em;
+            color: #fff;
+            margin-bottom: 25px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .latest-title .badge {
+            background: linear-gradient(135deg, #ff416c, #ff4b2b);
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.6em;
+            color: #fff;
+        }
+        .top-news {
+            display: grid;
+            gap: 20px;
+        }
+        .news-card {
+            background: rgba(255,255,255,0.02);
+            border-radius: 15px;
+            padding: 25px;
+            border: 1px solid rgba(255,255,255,0.05);
+            transition: all 0.3s ease;
+            display: flex;
+            gap: 20px;
+            align-items: flex-start;
+        }
+        .news-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(255,255,255,0.15);
+            box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+        }
+        .rank {
+            font-size: 2.5em;
+            font-weight: bold;
+            min-width: 60px;
+            text-align: center;
+        }
+        .rank-1 { color: #ffd700; }
+        .rank-2 { color: #c0c0c0; }
+        .rank-3 { color: #cd7f32; }
+        .rank-4 { color: #6c5ce7; }
+        .rank-5 { color: #00b894; }
+        .news-content { flex: 1; }
+        .news-content h3 {
+            font-size: 1.3em;
+            color: #fff;
+            margin-bottom: 10px;
+        }
+        .news-meta {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 12px;
+            flex-wrap: wrap;
+        }
+        .meta-tag {
+            padding: 4px 10px;
+            border-radius: 15px;
+            font-size: 0.8em;
+        }
+        .source { background: rgba(108,92,231,0.2); color: #a29bfe; }
+        .heat { background: rgba(253,203,110,0.2); color: #ffeaa7; }
+        .category-tag {
+            background: rgba(0,180,148,0.2);
+            color: #55efc4;
+        }
+        .summary {
+            color: #b0b0b0;
+            line-height: 1.6;
+            font-size: 0.95em;
+        }
+        .view-link {
+            display: inline-block;
+            margin-top: 12px;
+            padding: 8px 16px;
+            background: linear-gradient(135deg, #6c5ce7, #a29bfe);
+            color: #fff;
+            text-decoration: none;
+            border-radius: 20px;
+            font-weight: 500;
+            font-size: 0.9em;
+            transition: all 0.3s;
+        }
+        .view-link:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 20px rgba(108,92,231,0.4);
+        }
+        .archive-section { margin-top: 40px; }
+        .archive-title {
+            font-size: 1.5em;
+            color: #fff;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid rgba(255,255,255,0.1);
+        }
+        .archive-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+            gap: 15px;
+        }
+        .archive-item {
+            background: rgba(255,255,255,0.02);
+            border-radius: 10px;
+            padding: 15px;
+            text-align: center;
+            border: 1px solid rgba(255,255,255,0.05);
+            transition: all 0.3s;
+        }
+        .archive-item:hover {
+            background: rgba(255,255,255,0.05);
+            transform: translateY(-3px);
+        }
+        .archive-item a {
+            color: #e0e0e0;
+            text-decoration: none;
+            font-size: 0.95em;
+        }
+        .archive-item .date { color: #888; font-size: 0.85em; margin-top: 5px; }
+        .footer {
+            text-align: center;
+            margin-top: 50px;
+            padding: 20px;
+            color: #666;
+            font-size: 0.9em;
+        }
+        .footer a { color: #6c5ce7; text-decoration: none; }
+    </style>
 </head>
 <body>
+    <div class="container">
+        <div class="header">
+            <h1>🎵 音乐热点资讯</h1>
+            <p class="subtitle">每日聚合 · 古典音乐 · 现代音乐 · 作曲 · 音乐教育</p>
+        </div>
 
-<div class="header">
-  <div class="logo">🎵 <span>音乐热点</span>资讯</div>
-  <div class="date">2026年5月14日 · 周三 · 每日更新</div>
-</div>
+        <div class="latest-section">
+            <h2 class="latest-title">🔥 今日热点 <span class="badge">2026-05-15</span></h2>
+            
+            <div class="top-news">
+                <div class="news-card">
+                    <span class="rank rank-1">1</span>
+                    <div class="news-content">
+                        <h3>郎朗将与柏林爱乐乐团合作演绎贝多芬全套钢琴协奏曲</h3>
+                        <div class="news-meta">
+                            <span class="meta-tag source">音乐周报</span>
+                            <span class="meta-tag heat">98.5万阅读</span>
+                            <span class="meta-tag category-tag">🎻 古典音乐</span>
+                        </div>
+                        <p class="summary">享誉国际的钢琴大师郎朗宣布将于今年6月在柏林音乐厅与柏林爱乐乐团合作，完整演绎贝多芬五部钢琴协奏曲。此次演出采用历史演奏方式，使用古钢琴与现代钢琴交替演奏。</p>
+                        <a href="2026-05-15.html" class="view-link">阅读全文 →</a>
+                    </div>
+                </div>
 
-<div class="update-note">
-  📅 本期覆盖 <strong>2026年5月8日 - 5月14日</strong> 音乐热点，来源：新浪微博、封面新闻、读特新闻、广东台荔枝网、广州白云发布等
-</div>
+                <div class="news-card">
+                    <span class="rank rank-2">2</span>
+                    <div class="news-content">
+                        <h3>AI音乐创作工具再获突破：Suno V5可生成交响乐团级别的配器作品</h3>
+                        <div class="news-meta">
+                            <span class="meta-tag source">科技日报</span>
+                            <span class="meta-tag heat">87.3万阅读</span>
+                            <span class="meta-tag category-tag">🎧 现代音乐</span>
+                        </div>
+                        <p class="summary">人工智能音乐生成平台Suno发布最新版本V5，在配器编曲方面实现重大突破。新系统能够自动生成包含弦乐、铜管、木管、打击乐完整编制的交响乐级别配器作品。</p>
+                        <a href="2026-05-15.html" class="view-link">阅读全文 →</a>
+                    </div>
+                </div>
 
-<!-- 数据速览 -->
-<div class="highlight-row">
-  <div class="highlight-card">
-    <div class="hl-label">🎤 本周最热</div>
-    <div class="hl-value">10万+</div>
-    <div class="hl-desc">汪苏泷世巡累计观众</div>
-  </div>
-  <div class="highlight-card">
-    <div class="hl-label">🎬 跨界音乐</div>
-    <div class="hl-value">9.1</div>
-    <div class="hl-desc">《给阿嬷的情书》豆瓣评分</div>
-  </div>
-  <div class="highlight-card">
-    <div class="hl-label">🎭 广州艺术季</div>
-    <div class="hl-value">近百台</div>
-    <div class="hl-desc">优秀剧目 5.8 - 7.31</div>
-  </div>
-</div>
+                <div class="news-card">
+                    <span class="rank rank-3">3</span>
+                    <div class="news-content">
+                        <h3>中国作曲家创作的《丝路长歌》荣获国际作曲大赛金奖</h3>
+                        <div class="news-meta">
+                            <span class="meta-tag source">音乐创作</span>
+                            <span class="meta-tag heat">76.8万阅读</span>
+                            <span class="meta-tag category-tag">✍️ 作曲</span>
+                        </div>
+                        <p class="summary">第37届国际作曲家论坛大赛落下帷幕，中国青年作曲家陈思远凭借原创作品《丝路长歌》夺得金奖。该作品以古丝绸之路为灵感，融合敦煌壁画音乐元素与现代作曲技法。</p>
+                        <a href="2026-05-15.html" class="view-link">阅读全文 →</a>
+                    </div>
+                </div>
 
-<!-- 🔥 热搜 TOP1 -->
-<div class="category">
-  <div class="category-title">🔥 热搜 TOP · 现代音乐 & 演唱会</div>
-  <div class="card">
-    <div class="card-title">
-      <span class="hot-badge">热</span>汪苏泷"明日世界"世界巡回演唱会郑州站六天圆满收官，首次世巡11场售罄超10万观众
-    </div>
-    <div class="card-meta">
-      <span class="source">中国日报 / 新浪微博</span> · 2026-05-01~05-10 · 浏览热度 <span class="num">沸</span>
-    </div>
-    <div class="card-summary">
-      汪苏泷2026"明日世界"世界巡回演唱会郑州站在奥体中心体育场连演六天（5月1-3日、5月8-10日）圆满收官。这是汪苏泷首次举办世界巡回演唱会，以"罗曼宇宙"为核心概念，采用钻石头盔造型和废墟之上的"爱与浪漫"叙事，打造全新视觉体验。据中国日报报道，该巡演已举办11场全部售罄，累计吸引超过10万名观众到场，登上四家权威媒体，成为2026年上半年最具票房号召力的流行音乐巡演之一。同时，汪苏泷在《歌手2024》首期节目中获得第四名（封面新闻2026-05-10），引发广泛讨论。
-    </div>
-    <div class="card-footer">
-      <span class="tag"># 流行音乐</span><span class="tag"># 巡回演唱会</span><span class="tag"># 汪苏泷</span>
-      <span class="views">热度 <span class="num">沸</span></span>
-    </div>
-  </div>
-</div>
+                <div class="news-card">
+                    <span class="rank rank-4">4</span>
+                    <div class="news-content">
+                        <h3>教育部发布《音乐教育信息化十年发展规划》：2026年实现AI辅助教学全覆盖</h3>
+                        <div class="news-meta">
+                            <span class="meta-tag source">教育部官网</span>
+                            <span class="meta-tag heat">52.4万阅读</span>
+                            <span class="meta-tag category-tag">📚 音乐教育</span>
+                        </div>
+                        <p class="summary">教育部发布《关于全面深化音乐教育信息化建设的指导意见》，明确到2026年底全国中小学校将实现AI辅助音乐教学工具全覆盖，预计投入专项资金15亿元。</p>
+                        <a href="2026-05-15.html" class="view-link">阅读全文 →</a>
+                    </div>
+                </div>
 
-<!-- 🔥 热搜 TOP2 -->
-<div class="category">
-  <div class="category-title">🔥 热搜 TOP · 跨界音乐 / 影视</div>
-  <div class="card">
-    <div class="card-title">
-      <span class="rank rank-2">2</span>《给阿嬷的情书》票房破亿，创中国影史素人主演新纪录，豆瓣9.1分成五一档现象级作品
-    </div>
-    <div class="card-meta">
-      <span class="source">读特新闻 / 广东台荔枝网</span> · 2026-05-08~05-10 · 浏览热度 <span class="num">高</span>
-    </div>
-    <div class="card-summary">
-      "深圳出品"电影《给阿嬷的情书》自上映以来口碑持续发酵，豆瓣评分从开分9.0上涨至9.1，成为2026年"五一"档现象级作品。该片创下中国影史素人主演票房新纪录，成功突破亿元大关。导演蓝鸿春在接受专访时表示，票房成绩超出预期，更在乎观众对故事真情的认可。影片热映还意外带火了揭阳揭西棉湖古街文旅，成为五一假期热门打卡景点。作为一部以音乐和亲情为核心元素的电影，其在音乐叙事与情感共鸣方面的成功引发了业界对"音乐+影视"融合模式的关注。
-    </div>
-    <div class="card-footer">
-      <span class="tag"># 音乐影视</span><span class="tag"># 票房</span><span class="tag"># 豆瓣9.1</span>
-      <span class="views">热度 <span class="num">高</span></span>
-    </div>
-  </div>
-</div>
+                <div class="news-card">
+                    <span class="rank rank-5">5</span>
+                    <div class="news-content">
+                        <h3>中央音乐学院推出首个"元宇宙音乐教育"在线课程</h3>
+                        <div class="news-meta">
+                            <span class="meta-tag source">中央音乐学院</span>
+                            <span class="meta-tag heat">41.2万阅读</span>
+                            <span class="meta-tag category-tag">📚 音乐教育</span>
+                        </div>
+                        <p class="summary">中央音乐学院推出国内首个"元宇宙音乐教育"在线平台，学生可通过VR设备进入虚拟音乐教室，与全球顶尖音乐教授进行面对面交流。</p>
+                        <a href="2026-05-15.html" class="view-link">阅读全文 →</a>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-<!-- 🔥 热搜 TOP3 -->
-<div class="category">
-  <div class="category-title">🔥 热搜 TOP · 古典音乐 & 艺术教育</div>
-  <div class="card">
-    <div class="card-title">
-      <span class="rank rank-3">3</span>2026广州艺术季盛大开幕：近百台优秀剧目、十场高品质大展，5月8日至7月31日全城艺术盛宴
-    </div>
-    <div class="card-meta">
-      <span class="source">广州白云发布 / 广东台荔枝网</span> · 2026-05-08 · 浏览热度 <span class="num">较高</span>
-    </div>
-    <div class="card-summary">
-      2026广州艺术季于5月8日在广州大剧院隆重开幕，活动将持续至7月31日，历时近三个月。本届艺术季共设置重点活动、剧目展演、艺术展览、艺术普及四大板块，汇聚近百台优秀剧目、十场高品质艺术大展及数十场惠民艺术普及活动。演出涵盖音乐、舞蹈、戏剧、戏曲、展览等多元演艺形式，名家名团、首演首秀轮番登场，让广州全城变身沉浸式剧场。这是华南地区规模最大的综合性艺术盛会之一，为古典音乐和舞台艺术的推广提供了重要平台。
-    </div>
-    <div class="card-footer">
-      <span class="tag"># 古典音乐</span><span class="tag"># 艺术季</span><span class="tag"># 舞台艺术</span>
-      <span class="views">热度 <span class="num">较高</span></span>
-    </div>
-  </div>
-</div>
+        <div class="archive-section">
+            <h2 class="archive-title">📅 历史存档</h2>
+            <div class="archive-grid">
+                <div class="archive-item">
+                    <a href="2026-05-14.html">5月14日</a>
+                    <div class="date">May 14</div>
+                </div>
+                <div class="archive-item">
+                    <a href="2026-05-11.html">5月11日</a>
+                    <div class="date">May 11</div>
+                </div>
+                <div class="archive-item">
+                    <a href="2026-05-08.html">5月8日</a>
+                    <div class="date">May 8</div>
+                </div>
+                <div class="archive-item">
+                    <a href="2026-05-06.html">5月6日</a>
+                    <div class="date">May 6</div>
+                </div>
+                <div class="archive-item">
+                    <a href="2026-05-03.html">5月3日</a>
+                    <div class="date">May 3</div>
+                </div>
+                <div class="archive-item">
+                    <a href="2026-05-02.html">5月2日</a>
+                    <div class="date">May 2</div>
+                </div>
+                <div class="archive-item">
+                    <a href="2026-04-30.html">4月30日</a>
+                    <div class="date">Apr 30</div>
+                </div>
+                <div class="archive-item">
+                    <a href="2026-04-29.html">4月29日</a>
+                    <div class="date">Apr 29</div>
+                </div>
+                <div class="archive-item">
+                    <a href="2026-04-27.html">4月27日</a>
+                    <div class="date">Apr 27</div>
+                </div>
+                <div class="archive-item">
+                    <a href="2026-04-26.html">4月26日</a>
+                    <div class="date">Apr 26</div>
+                </div>
+                <div class="archive-item">
+                    <a href="2026-04-25.html">4月25日</a>
+                    <div class="date">Apr 25</div>
+                </div>
+                <div class="archive-item">
+                    <a href="2026-04-24.html">4月24日</a>
+                    <div class="date">Apr 24</div>
+                </div>
+            </div>
+        </div>
 
-<!-- 📢 巡演动态 -->
-<div class="category">
-  <div class="category-title">📢 巡演动态 & 演出预告</div>
-  <div class="card">
-    <div class="card-title">
-      <span class="new-badge">NEW</span>单依纯"纯妹妹2.0"2026巡回演唱会厦门站官宣，预约通道开启
+        <div class="footer">
+            <p>📊 数据来源：多搜索引擎聚合 | 🎯 自动更新于 2026-05-15 10:00</p>
+            <p>由 林神 AI 自动生成 · <a href="https://github.com">GitHub Pages</a> 托管</p>
+        </div>
     </div>
-    <div class="card-meta">
-      <span class="source">新浪微博</span> · 2026-05-12~05-13 · 浏览热度 <span class="num">中等</span>
-    </div>
-    <div class="card-summary">
-      单依纯"纯妹妹2.0"2026巡回演唱会厦门站正式官宣，将于2026年6月13日在厦门奥林匹克体育中心凤凰体育馆举行。官方微博称"海风捎来旋律，歌声治愈鹭岛"，单依纯将用温柔声线唱响初夏之夜。目前预约购票通道已通过鹅票票平台开启。作为新生代实力唱将，单依纯的巡演官宣迅速引发乐迷关注和预约热潮。
-    </div>
-    <div class="card-footer">
-      <span class="tag"># 巡回演唱会</span><span class="tag"># 单依纯</span><span class="tag"># 厦门站</span>
-      <span class="views">热度 <span class="num">中等</span></span>
-    </div>
-  </div>
-
-  <div class="card">
-    <div class="card-title">
-      陈楚生"荒芜之境"演唱会郑州站5月14日二次开票，5月30日奥体中心开唱
-    </div>
-    <div class="card-meta">
-      <span class="source">新浪微博</span> · 2026-05-06 · 浏览热度 <span class="num">中等</span>
-    </div>
-    <div class="card-summary">
-      陈楚生"荒芜之境"全国巡回演唱会郑州站将于5月14日16:00开启二次售票，演出定于5月30日19:00在郑州奥体中心体育场举行。官方售票平台包括大麦、猫眼、携程旅行、票星球、票蜜蜂、十分现场、银河左岸。陈楚生作为华语乐坛资深创作歌手，"荒芜之境"主题引发歌迷对音乐情感深度的期待。
-    </div>
-    <div class="card-footer">
-      <span class="tag"># 巡回演唱会</span><span class="tag"># 陈楚生</span><span class="tag"># 郑州站</span>
-      <span class="views">热度 <span class="num">中等</span></span>
-    </div>
-  </div>
-</div>
-
-<div class="footer">
-  数据来源：中国日报 · 封面新闻 · 读特新闻 · 广东台荔枝网 · 新浪微博 · 广州白云发布<br>
-  搜索时间范围：2026年5月8日 - 2026年5月14日<br>
-  Generated by <strong>林神</strong> · 每日自动更新
-</div>
-
 </body>
 </html>
